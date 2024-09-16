@@ -1,0 +1,144 @@
+﻿@{
+	ViewData["Title"] = "Vegas Transportes Serviços";
+}
+<script src="path/to/gzappy-js.min.js"></script>
+
+<html>
+<head>
+	<!-- Icon nav bar -->
+	<link rel="shortcut icon" href="./css/img/icone-com-gradiente.png" type="image/x-icon" />
+
+	<title>Envio Rodoviario</title>
+
+</head>
+<body>
+	<form id="form" method="post" autocomplete="off">
+		<div class="container">
+
+			<div class="mt-2" id="msg_retorno_ctn">
+
+				<h1 class="mb-4"><img id="logo" src="~/css/img/logo.png" onclick="sendMessage();" /></h1>
+
+				<div class="col-md-12 col-lg-12" id="msg_retorno">
+					<div id="msg_exibicao"></div>
+				</div>
+
+			</div>
+
+			<!-- Dados do cliente  -->
+			<div id="" class="row mb-2">
+
+				<div class="titleService">
+					<h2 class="mb-2">Envio Rapido</h2>
+					<a class="itemBack" href="@Url.Action("Index", "Servicos")">
+						<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-arrow-left-circle" viewBox="0 0 16 16">
+							<path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8m15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-4.5-.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5z" />
+						</svg>
+					</a>
+				</div>
+
+				<div class="col-md-2">
+					<div class="form-group">
+						<label for="Retirada">Documento <label class="obrigatorio">*</label></label>
+						<select required="required" id="tipo-doc" class="form-control" onchange="escolheDocEnvioRapido();">
+							<option value="cpf-pessoa-fisica" selected>CPF</option>
+							<option value="cnpj-empresa">CNPJ</option>
+						</select>
+					</div>
+				</div>
+
+				<div class="col-md-3" id="CPFenvioRapido">
+					<div class="form-group">
+						<label for="CPF">CPF<label class="obrigatorio">*</label></label>
+						<input required="required" type="text" class="form-control" id="CPF" name="CPF" placeholder="CPF. Ex: 123.456.789-10" onkeypress="apenasNumeros(event)" onchange="mascaraCpfEnvioRapido();" maxlength="11">
+					</div>
+				</div>
+
+				<div class="col-md-3" id="CNPJenvioRapido">
+					<div class="form-group">
+						<label for="CPF">CNPJ<label class="obrigatorio">*</label></label>
+						<input required="required" type="text" class="form-control" id="CNPJ" name="CNPJ" placeholder="CNPJ. Ex: 14.360.636/0001-59" onkeypress="apenasNumeros(event)" onchange="mascaraCnpjEnvioRapido();" maxlength="14">
+					</div>
+				</div>
+
+				<div class="col-md-3">
+					<div class="form-group">
+						<label for="Telefone">Telefone <label class="obrigatorio">*</label></label>
+						<input required="required" type="tel" class="form-control" id="Telefone" name="Telefone" placeholder="Ex: 11 97070 6060." maxlength="11" onchange="mascaraTEL();" onkeypress="apenasNumeros(event)">
+					</div>
+				</div>
+
+				<div class="col-md-4">
+					<div class="form-group">
+						<label for="Descrição">Descrição <label class="obrigatorio">Opcional</label></label>
+						<input required="required" class="form-control" id="descNota" name="descNota" placeholder="Ex: Nota do João de Manaus" maxlength="50">
+					</div>
+				</div>
+
+			</div>
+
+			<!-- Dados da nota -->
+			<div class="mt-2" id="NotasFiscais">
+				<label for="fileUpload">Upload your file:</label>
+				<input type="file" id="fileUploadNotaFiscal" name="fileUploadNotaFiscal" accept=".jpeg, .jpg, .png, .pdf" onchange="nomeiaArquivo();">
+			</div>
+
+			<div class="mt-3">
+				<div class="col-md-12 col-lg-12">
+					<div class="form-group d-flex justify-content-center">
+						<button type="button" id="iconEnvioRapido" class="btn btn-outline-primary" onclick="clickArquivo();">
+							<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-file-earmark-arrow-up" viewBox="0 0 16 16">
+								<path d="M8.5 11.5a.5.5 0 0 1-1 0V7.707L6.354 8.854a.5.5 0 1 1-.708-.708l2-2a.5.5 0 0 1 .708 0l2 2a.5.5 0 0 1-.708.708L8.5 7.707z" />
+								<path d="M14 14V4.5L9.5 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2M9.5 3A1.5 1.5 0 0 0 11 4.5h2V14a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h5.5z" />
+							</svg>
+							<div class="mt-3" id="nomeArquivo">Nenhum arquivo selecionado</div>
+						</button>
+					</div>
+				</div>
+			</div>
+
+			<!-- Botões Padrão -->
+			<div class="mt-3">
+				<div class="col-md-12 col-lg-12">
+					<div class="form-group d-flex justify-content-center">
+						<button type="button" class="btn btn-primary" onclick="baixaNtFiscal();">
+							<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right-circle" viewBox="0 0 16 16">
+								<path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8m15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0M4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5z" />
+							</svg>&nbsp;Enviar
+						</button>
+					</div>
+				</div>
+			</div>
+
+			<!-- Aguarde o contato de nossa equipe -->
+			<div id="contatoEquipe" class="row mb-4">
+				<h2 class="mb-2">
+					Pedido Solicitado <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-clipboard2-check" viewBox="0 0 16 16">
+						<path d="M9.5 0a.5.5 0 0 1 .5.5.5.5 0 0 0 .5.5.5.5 0 0 1 .5.5V2a.5.5 0 0 1-.5.5h-5A.5.5 0 0 1 5 2v-.5a.5.5 0 0 1 .5-.5.5.5 0 0 0 .5-.5.5.5 0 0 1 .5-.5z" />
+						<path d="M3 2.5a.5.5 0 0 1 .5-.5H4a.5.5 0 0 0 0-1h-.5A1.5 1.5 0 0 0 2 2.5v12A1.5 1.5 0 0 0 3.5 16h9a1.5 1.5 0 0 0 1.5-1.5v-12A1.5 1.5 0 0 0 12.5 1H12a.5.5 0 0 0 0 1h.5a.5.5 0 0 1 .5.5v12a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5z" />
+						<path d="M10.854 7.854a.5.5 0 0 0-.708-.708L7.5 9.793 6.354 8.646a.5.5 0 1 0-.708.708l1.5 1.5a.5.5 0 0 0 .708 0z" />
+					</svg>
+				</h2>
+				<h5 class="mb-2">Aguarde o contato de nossa equipe...</h5>
+				<input type="hidden" disabled value="" id="valorMedioCotacao">
+
+				<!-- Botões Padrão -->
+				<div class="mt-4">
+					<div class="col-md-12 col-lg-12">
+						<div class="form-group d-flex justify-content-center">
+							<button type="button" id="Continuar" class="btn btn-primary" onclick="window.location.href='@Url.Action("Index", "Home")'">
+								<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" class="bi bi-house" viewBox="0 0 16 16">
+									<path d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L2 8.207V13.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V8.207l.646.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293zM13 7.207V13.5a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5V7.207l5-5z" />
+								</svg> &nbsp;Voltar a Home
+							</button>
+						</div>
+					</div>
+				</div>
+			</div>
+
+
+		</div>
+	</form>
+
+</body>
+</html>

@@ -1,0 +1,3134 @@
+/* Estilizando a barra de rolagem */
+body::-webkit-scrollbar {
+    width: 05px; /* Largura da barra de rolagem */
+}
+
+body::-webkit-scrollbar-track {
+    background: #010c10; /* Cor do fundo da barra de rolagem */
+}
+
+body::-webkit-scrollbar-thumb {
+    background: #052e3d; /* Cor do "polegar" da barra de rolagem */
+    border-radius: 05px; /* Bordas arredondadas do polegar */
+}
+
+body::-webkit-scrollbar-thumb:hover {
+    background: #2680b2; /* Cor do polegar quando passa o mouse por cima */
+}
+* {
+    font-family: 'Poppins', 'Roboto', 'Montserrat', 'Open Sans', sans-serif;
+}
+
+html {
+    position: relative;
+    min-height: 100%;
+    font-family: 'Poppins', 'Roboto', 'Montserrat', 'Open Sans', sans-serif;
+    color: #fff;
+}
+
+body {
+    margin-bottom: 05px;
+    background: linear-gradient(#010c10, #02141e);
+    font-family: 'Poppins', 'Roboto', 'Montserrat', 'Open Sans', sans-serif;
+    color: #fff;
+    max-width: 1920px;
+    overflow-x: hidden;
+}
+
+#body-home-page {
+    overflow-y: hidden;
+}
+
+.container {
+    margin-top: 05vh;
+}
+
+.service-btn {
+    width: 200px;
+    height: 200px;
+    border-radius: 25px;
+    border: none;
+    margin: 20px;
+    padding: 0px 05%;
+    font-size: 20px;
+    color: #fff;
+    background: linear-gradient(135deg, #006cff 0%, #2c83ab 100%);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 1.0);
+    transition: transform 0.2s;
+}
+
+.service-btn:hover {
+    transform: scale(1.2);
+}
+
+.service-btn h3 {
+    font-size: 0.75em;
+    color: silver;
+    padding-top: 02%;
+}
+
+#logo {
+    width: auto;
+    height: 90px;
+}
+
+.form-group input {
+    border-radius: 10px;
+    border: none;
+    background: #1D3C4E;
+    font-size: 0.875em;
+    height: 3em;
+    color: #fff;
+}
+
+.form-group input:focus {
+    background: #1D3C4E;
+    outline: none; /* Remove a borda padr�o de foco */
+    color: #fff;
+    font-size: 0.875em;
+    border: 1px solid transparent; /* Garante que o input tenha uma borda para aplicar o filtro */
+    box-shadow: 0 0 8px rgba(0, 123, 255, 0.6); /* Adiciona o efeito de borda com desfoque */
+    filter: drop-shadow(0 0 8px rgba(0, 123, 255, 0.6)); /* Aplica um efeito de desfoque ao redor do campo */
+}
+
+
+.form-group select {
+    border-radius: 10px;
+    background: #1D3C4E;
+    color: #fff;
+    font-size: 0.875em;
+    height: 3em;
+    border: none;
+}
+
+.form-group select:focus {
+    background: #1D3C4E;
+    outline: none; /* Remove a borda padr�o de foco */
+    font-size: 0.875em;
+    color: #fff;
+    border: 1px solid transparent; /* Garante que o input tenha uma borda para aplicar o filtro */
+    box-shadow: 0 0 8px rgba(0, 123, 255, 0.6); /* Adiciona o efeito de borda com desfoque */
+    filter: drop-shadow(0 0 8px rgba(0, 123, 255, 0.6)); /* Aplica um efeito de desfoque ao redor do campo */
+}
+
+.input-group-text {
+    background: #245571;
+    color: #fff;
+    font-size: 0.875em;
+    border: none;
+}
+
+.form-group input:disabled {
+    border-radius: 10px;
+    background: #245571;
+    color: #fff;
+    font-size: 0.875em;
+    height: 3em;
+    border: none;
+}
+
+.btn-outline-primary, .btn-primary {
+    width: 100%;
+}
+
+.btn-outline-secondary, .btn-secondary {
+    width: 100%;
+}
+
+#Salvar, #Limpar {
+    margin-bottom: 2vh;
+}
+
+.form-group select::placeholder {
+    font-size: 1em;
+}
+
+.form-group input::placeholder {
+    font-size: 1em;
+}
+
+#alinhaCheck {
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    padding-top: 20px;
+}
+
+#n_peso {
+    width: 25px;
+    height: 25px;
+    margin: 2px;
+}
+
+.form-check {
+    padding-left: 0px;
+}
+
+#Continuar, #Voltar {
+    margin: 0px 0.4em;
+}
+
+#msg_avisoZero {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+#msg_avisoZero label {
+    font-size: 0.9em;
+    color: #fff;
+    font-style: italic;
+    font-weight: 200;
+}
+
+#msg_retorno_ctn {
+    height: 15vh;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    display: flex;
+}
+
+#msg_retorno {
+    background-color: #931010;
+    height: 7vh;
+    width: 50%;
+    border-radius: 5px;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    display: none;
+}
+
+#msg_exibicao {
+    width: 100%;
+    height: 90%;
+    text-align: center;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    font-size: 0.8em;
+}
+
+
+#cofirmResumoPedido {
+    width: 100%;
+    height: 100vh;
+}
+
+.modal-dialog {
+    overflow: hidden;
+    width: auto;
+    height: auto;
+    border-radius: 20px;
+}
+
+.modal-header {
+    align-items: normal;
+    padding-top: 05%;
+    border-bottom: none;
+}
+
+.modal-content {
+    border: none;
+    background-color: #11273e;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.875em;
+}
+
+.modal-body h5, h6 {
+    line-height: 1.5em;
+}
+
+.modal-footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-top: 1px solid #0d6efd;
+    width: 70%;
+}
+
+#CtResumoPedido {
+    width: 100%;
+    height: auto;
+    padding: 0px 65px 10px 65px;
+    display: block;
+    align-items: center;
+    justify-content: center;
+}
+
+#CtResumoPedido div {
+    padding-bottom: 5px;
+}
+
+#resumoNome,
+#resumoDocumento,
+#resumoDestino,
+#resumoTipoCarga,
+#resumoPesoCarga,
+#resumoValorMercadoria,
+#resumoDescricao,
+#resumoCotacao,
+#tpServico,
+#resumoLocal,
+#resumoHorario,
+#resumoTipoFardo,
+#resumoDescricao,
+#resumoPesoFardo,
+#resumoPesoMala,
+#resumoLocalOrigem,
+#resumoLocalDestino {
+    font-weight: 200;
+}
+
+#ctResumoCotacao {
+    margin-top: 05px;
+    padding-top: 10px;
+    border-top: 1px solid #0d6efd;
+    font-size: 1.5em;
+}
+
+#contatoEquipe {
+    display: none;
+}
+
+#msg_aviso_entrega_coleta {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+#msg_aviso_entrega_coleta label {
+    font-size: 1em;
+    color: #fff;
+    font-style: italic;
+    font-weight: 200;
+}
+
+.obrigatorio {
+    font-weight: 100;
+    font-size: 12px;
+}
+
+#simularCotacao {
+    border-top: 1px solid #0d6efd;
+    display: none;
+}
+
+#simularCotacaoh2 {
+    font-size: 1.35em;
+}
+
+#ctNotaFiscal {
+    justify-content: space-between;
+    align-items: end;
+    display: flex;
+}
+
+
+.fileInput {
+    display: none;
+}
+
+.nt {
+    border: 1px solid #0d6efd;
+    background-color: none;
+    border-radius: 10px;
+    padding: 15px 0px;
+}
+
+#btAddNotaFiscal {
+    width: 100%;
+}
+
+#addNotaFiscal {
+    display: flex;
+    justify-content: right;
+    align-items: center;
+}
+
+#horarioDeServico {
+    font-size: 0.775em;
+}
+
+
+.imagensIcon {
+    width: 80px;
+    height: auto;
+}
+
+#somenteComprar {
+    width: 20px;
+    height: 20px;
+    margin: 2px;
+}
+
+#iconEnvioRapido {
+    padding: 15px 0px;
+}
+
+
+.navbar-custom {
+    background-color: none; /* Cor de fundo customizada */
+    width: 100%;
+    height: 100px;
+}
+
+.navbar-custom .navbar-brand,
+.navbar-custom .nav-link {
+    color: #ffffff; /* Cor dos textos */
+}
+
+#logo-home {
+    padding-left: 100px;
+    width: auto;
+    height: 55px;
+}
+
+.navbar {
+    z-index: 100;
+}
+
+#navbarNavMenu {
+    display: flex;
+    align-items: center; /* Alinha o conte�do na parte inferior */
+    height: 65px;
+}
+
+.navbar-expand-lg .navbar-nav .nav-link {
+    padding-right: 0.8rem;
+    padding-left: 0.8rem;
+}
+
+#navbarNavMenu ul li {
+    padding: 5px 15px;
+}
+
+.nav-item {
+    margin-top: 5px;
+}
+
+.nav-link:hover {
+    background-color: #086FEF;
+    border-radius: 15px;
+}
+
+.nav-item .active {
+    background-color: #086FEF;
+    border-radius: 15px;
+}
+
+.nav-link {
+    padding: 05px 20px;
+    margin: 5px;
+}
+
+#navbarNavRedes {
+    padding-right: 80px;
+}
+
+#navbarNavRedes ul li a{
+    padding: 0px 05px;
+    color: #fff;
+}
+
+#ctImg {
+    position: absolute;
+    display: flex;
+    justify-content: right;
+    margin-top: 7%;
+}
+
+.responsive-image {
+    height: 500px;
+    width: 100%;
+    border-radius: 50%;
+    box-shadow: 0 0 60px #88eaff80;
+}
+
+.responsive-aviao {
+    height: 140px;
+    width: 100%;
+}
+
+.planet-home {
+    margin: 0;
+    padding: 0;
+    position: relative;
+    right: -30px;
+}
+
+.planet-aviao {
+    margin: 0;
+    padding: 0;
+    position: relative;
+    right: -70%;
+    z-index: 10;
+    align-items: center;
+    display: flex;
+}
+
+body figure {
+    position: absolute;
+}
+
+.text-home-page h1 {
+    font-size: 3.5em;
+    font-weight: bold;
+}
+
+.text-home-page h6 {
+    font-size: 1.30em;
+    font-weight: 200;
+}
+
+.txt_home {
+    margin-left: 125px;
+    width: 600px;
+    z-index: 10;
+}
+
+.button {
+    display: inline-block;
+    padding: .80rem 1.6rem;
+    border-radius: 10rem;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1em;
+    color: #010F16;
+    text-transform: uppercase;
+    transition: all .3s;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.button:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+    border-radius: 10rem;
+    z-index: -2;
+}
+
+.button:before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0%;
+    height: 100%;
+    background: linear-gradient(to right, #086fef, #2680b2);
+    transition: all .3s;
+    border-radius: 10rem;
+    z-index: -1;
+}
+
+.button:hover {
+    color: #fff;
+}
+
+.button:hover:before {
+    width: 100%;
+}
+
+.rodape {
+    height: 30px;
+    max-height: 50px;
+    width: 100%;
+    max-width: 100%;
+    background: #00080c;
+    color: #fff;
+    font-weight: 200;
+    font-size: 0.75em;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    margin: 0;
+    position: absolute;
+    bottom: 0;
+    z-index: 10;
+}
+
+#navbarMenuMobile ul li {
+    text-decoration: none
+}
+
+#menuOpen {
+    display: none;
+    cursor: pointer;
+}
+
+
+#navbarNavRedes, #navbarNavMenu {
+    display: flex;
+}
+
+#menu-mobile-id {
+    display: none;
+}
+
+.menu-mobile {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 100vh;
+    background: #000000c3;
+    display: flex;
+    align-items: center;
+    justify-content: right;
+    z-index: 101;
+}
+
+.menu-options {
+    background: #010C11;
+    margin: 0;
+    display: flex;
+    padding-top: 40px;
+    justify-content: center;
+    width: 50%;
+    height: 100vh;
+}
+
+.menu-options ul li a {
+    text-decoration: none;
+    color: #fff !important;
+}
+
+#mobile-link {
+    padding: 1em 0.60em;
+    justify-content: space-between;
+    display: flex;
+    align-items: center;
+}
+
+#menuClose {
+    width: 100%;
+    height: 50px;
+    align-items: end;
+    display: flex;
+    text-decoration: none;
+    list-style: none;
+    cursor: pointer;
+}
+
+#menuClose li {
+    margin-bottom: 3em;
+}
+
+#menuMobileOptions li {
+    margin: 0.60em 0;
+}
+
+.redes-sociais-mobile ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+}
+
+.redes-sociais-mobile ul li {
+    margin: 0;
+    padding: 0;
+}
+
+.redes-sociais-mobile ul li svg {
+    margin: 0 10px;
+}
+
+.nav-item a svg {
+    right: 0;
+}
+
+
+.duvidas-frequentes {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: auto;
+    padding: 0 15%;
+}
+
+.duvidas-frequentes-text {
+    text-align: left;
+    width: 70%;
+}
+
+.duvidas-frequentes-text h1 {
+    font-weight: bold;
+}
+
+.duvidas-frequentes-text h6 {
+    font-weight: 300;
+}
+
+.duvidas-frequentes-image {
+    align-items: initial;
+    width: 30%;
+}
+
+.duvidas-frequentes-image iframe {
+    justify-content: initial;
+    display: flex;
+    width: 100%;
+    height: 200px;
+}
+
+.container-duvidas {
+    background: #0000003f;
+    width: 100%;
+    height: auto;
+}
+
+.duv {
+    text-align: left;
+    padding: 1% 15%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.duv-text {
+    width: 80%;
+    cursor: pointer;
+}
+
+#navbarNavRedes ul li a svg:hover {
+    color: #0d6efd;
+    cursor: pointer;
+}
+
+.duv-icon {
+    width: 20%;
+    padding-top: 5px;
+    padding-top: 1%;
+    justify-content: left;
+    display: flex;
+    cursor: pointer;
+}
+
+.quest {
+    font-weight: bold;
+    font-size: 0.9em;
+}
+
+.resp {
+    font-weight: 200;
+    font-size: 0.9em;
+}
+
+#resp-1, #resp-2, #resp-3, #resp-4, #resp-5, #tc_valorCarga {
+    display: none;
+}
+
+#duv-esc-icon-1, #duv-esc-icon-2, #duv-esc-icon-3, #duv-esc-icon-4, #duv-esc-icon-5 {
+    display: none;
+}
+
+.contato-rede {
+    border: 5px solid #fff;
+    border-radius: 15px;
+    background-color: transparent;
+    padding: 0 10%;
+    overflow: hidden;
+    width: 450px;
+    height: 225px;
+}
+
+    .contato-rede iframe {
+        height: 70px;
+        width: auto;
+    }
+
+.ct-contatos {
+    align-items: center;
+    display: flex;
+}
+
+
+.col-rede {
+    display: flex;
+    margin: 10px 0px;
+    flex: 0 0 0%;
+}
+
+#iframeWhats {
+    padding: 4%;
+}
+
+.button-rede {
+    display: inline-block;
+    padding: .80rem 1.6rem;
+    border-radius: 10rem;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 0.8em;
+    color: #fff;
+    text-transform: uppercase;
+    transition: all .3s;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.button-rede:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to right, #086fef, #2680b2);
+    border-radius: 10rem;
+    z-index: -2;
+}
+
+.button-rede:before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0%;
+    height: 100%;
+    background-color: #fff;
+    transition: all .3s;
+    border-radius: 10rem;
+    z-index: -1;
+}
+
+.button-rede:hover {
+    color: #086fef;
+}
+
+.button-rede:hover:before {
+    width: 100%;
+}
+
+.btn-service-rede {
+    padding: 2% 5%;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+}
+
+.text-contatos-rede {
+    text-align: center;
+}
+
+.text-contatos-rede h1 {
+    font-size: 1.1em;
+}
+
+.text-contatos-rede h2 {
+    font-size: 0.9em;
+    font-weight: 200;
+}
+
+.ct-nossa-hist {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1% 10%;
+}
+
+.nossa-hist-icon {
+    width: 40%;
+}
+
+.nossa-hist-text {
+    width: 60%;
+    text-align: left;
+}
+
+.nossa-hist-text h1 {
+    font-size: 2em;
+    font-weight: bold;
+}
+
+.nossa-hist-text h2 {
+    font-size: 1em;
+    font-weight: 200;
+    line-height: 1.5;
+}
+
+.nossa-hist-icon iframe {
+    height: 250px;
+    width: auto;
+}
+
+.ct-nossos-parceiros {
+    width: 100%;
+    height: auto;
+    background-color: #00000050;
+    padding-top: 10px;
+    padding-bottom: 100px;
+}
+
+.ct-nossos-parceiros-text {
+    padding: 1% 10%;
+}
+
+.ct-nossos-parceiros-text h1 {
+    font-size: 2em;
+    font-weight: bold;
+}
+
+.ct-nossos-parceiros-text h2 {
+    font-size: 1em;
+    font-weight: 200;
+}
+
+.ct-parceiros-un {
+    padding-top: 35px;
+}
+
+#esc-ler-mais {
+    display: none;
+    color: #fff;
+    font-weight: 400;
+    cursor: pointer;
+    text-align: center;
+}
+
+#esc-ler-menos {
+    display: none;
+    color: #fff;
+    font-weight: 400;
+    cursor: pointer;
+    text-align: center;
+}
+
+.ct-missao-visao-valores {
+    padding: 5% 10%;
+}
+
+.mvv-itens-bot {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.ct-itens-bot {
+    display: flex;
+}
+
+.mvv-itens-top {
+    text-align: left;
+}
+
+.mvv-itens-top h1 {
+    font-size: 2em;
+    font-weight: bold;
+    padding: 0;
+    margin: 0;
+}
+
+
+.mvv-text {
+    text-align: left;
+    font-weight: 200;
+    font-size: 1em;
+    width: 55%;
+}
+
+.mvv-icons {
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    width: 45%;
+}
+
+.mvv-icons iframe {
+    height: 400px;
+    width: auto;
+}
+
+#esc-ler-menos-mvv, #esc-ler-mais-mvv {
+    display: none;
+    color: #fff;
+    font-weight: 400;
+    cursor: pointer;
+    text-align: center;
+}
+
+.ct-feedbacks{
+    width: 100%;
+    height: auto;
+    padding-bottom: 100px;
+    background: #00000030;
+    justify-items: center;
+    align-items: center;
+    display: flex;
+}
+
+.ct-feedbacks-center{
+    padding: 1% 10%;
+}
+
+.ct-feedbacks-top{
+    padding-bottom: 25px;
+}
+
+.ct-feedbacks-top h1 {
+    font-size: 2em;
+    font-weight: bold;
+    text-align: center;
+    padding-top: 20px;
+}
+
+.ct-feedbacks-top h2 {
+    font-size: 1em;
+    font-weight: 200;
+    text-align: center;
+    padding: 0 15%;
+}
+
+.ct-feedbacks-bot{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.ct-feed-contato {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 33%;
+}
+
+.ct-feed-contato h1{
+    font-size: 1.3em;
+    font-weight: bold;
+    padding-top: 10px;
+}
+
+.ct-feed-contato h2{
+    font-size: 1em;
+    font-weight: 200;
+    margin: 0;
+}
+
+.ct-feed-contato h3{
+    font-size: 1em;
+    font-weight: 300;
+    padding: 2% 15%;
+}
+
+.ct-feed-img img{
+    height: 150px;
+    width: auto;
+}
+
+.ct-feed-contato-center {
+    text-align: center;
+}
+
+.ct-feedbacks-flex {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+}
+
+/* Fundo TELA SERVI�OS */
+#ct-servicos {
+    position: relative;
+    overflow: hidden;
+}
+
+#ct-servicos::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url(../css/img/tela2-servicos.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: auto; /* Mant�m o tamanho original da imagem */
+    background-color: rgba(255, 255, 255, 0); /* Fundo transparente para o resto do conte�do */
+    opacity: 0.1;
+    z-index: -1;
+}
+
+/* Fundo TELA CONTATOS */
+#ct-contatos {
+    position: relative;
+    overflow: hidden;
+}
+
+#ct-contatos::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: url(../css/img/tela4-mapa.png);
+        background-repeat: no-repeat;
+        background-position: center;
+        opacity: 0.1;
+        z-index: -1;
+    }
+
+.slider {
+    background: none;
+    box-shadow: 0 10px 20px -5px #010a0f;
+    height: 100px;
+    margin: auto;
+    overflow: hidden;
+    position: relative;
+    width: 960px;
+}
+
+.titleService{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.itemBack {
+    margin-right: 1%;
+    border-radius: 50%;
+    color: #fff !important;
+}
+
+
+
+.slider::before,
+.slider::after {
+    content: "";
+    height: 100px;
+    position: absolute;
+    width: 20%;
+    z-index: 2;
+    background: linear-gradient(to right, #010a0f 0%, rgba(255, 255, 255, 0) 100%);
+}
+
+.ct-parceiros-un, .slider ::after, ::before {
+    box-sizing: unset;
+}
+
+.slider::after {
+    right: 0;
+    top: 0;
+    transform: rotateZ(180deg);
+}
+
+.slider::before {
+    left: 0;
+    top: 0;
+}
+
+.slider .slide-track {
+    animation: scroll 60s linear infinite;
+    display: flex;
+    width: calc(250px * 26); /* Ajustado para 26 elementos */
+}
+
+.slider .slide {
+    height: 250px;
+    width: auto;
+}
+
+.slider img {
+    padding: 5px 50px;
+    height: 90px;
+    width: auto;
+}
+
+
+#IconFichaCadastral {
+    padding: 15px 0px;
+}
+
+#ct-doc-comprovante, #ct-doc-comprovante-car, #ct-doc-comprovante-dig, #ct-doc-comprovante-rep, #ct-doc-comprovante-rep {
+    display: none;
+}
+
+#foto-face, #foto-com-documento {
+    width: 50px;
+    height: auto;
+}
+
+.ct-flex-doc{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.ct-flex-doc div{
+    width: 49%;
+}
+
+#nomeFileFotoFace, #nomeFileFotoComDocumento, #nomeFileHablitacao, #nomeFileCarro, #nomeFileHablitacaoRep, #nomeFileCarroRep {
+    width: 100%;
+    text-align: center;
+}
+
+#IcontCompResidencia {
+    padding: 15px 0px;
+}
+
+/* Animation */
+@keyframes scroll {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(calc(-250px * 13));
+    }
+    /* Ajustado para 13 elementos */
+}
+
+
+/* CELULARES */
+@media screen and (min-width: 0px) and (max-width: 319px) {
+
+    .titleService h2 {
+        font-size: 1em;
+    }
+
+    .slider {
+        width: 100%;
+    }
+
+    #msg_retorno {
+        width: 95%;
+        position: absolute;
+    }
+
+    .ct-feedbacks-flex {
+        display: block;
+    }
+
+    .ct-feed-contato {
+        width: 100%;
+    }
+
+    #esc-ler-mais-mvv {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    #esc-mvv {
+        display: none;
+    }
+
+    .ct-itens-bot {
+        display: block;
+    }
+
+    .mvv-itens-top {
+        text-align: center;
+    }
+
+    .mvv-text {
+        text-align: center;
+        width: 100%;
+    }
+
+    .mvv-icons {
+        width: 100%;
+    }
+
+        .mvv-icons iframe {
+            height: 300px;
+        }
+
+    .nossa-hist-icon iframe {
+        height: 200px;
+    }
+
+    .ct-nossos-parceiros {
+        margin-top: 15px;
+    }
+
+    .ct-nossa-hist {
+        display: block;
+    }
+
+    #esc-ler-mais {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .nossa-hist-icon {
+        width: 100%;
+    }
+
+    .nossa-hist-text {
+        width: 100%;
+        text-align: center;
+    }
+
+    #esc-nossa-hist {
+        display: none;
+    }
+
+    .ct-nossos-parceiros-text {
+        padding: 1% 5%;
+    }
+
+    .contato-rede {
+        padding: 0px 1%;
+    }
+
+    .duvidas-frequentes {
+        padding: 0 05%;
+    }
+
+    .duv {
+        padding: 01% 05%;
+    }
+
+    #ct-servicos::before {
+        background-image: none;
+    }
+
+    #ct-contatos::before {
+        background-image: none;
+    }
+
+    #navbarNavRedes, #navbarNavMenu {
+        display: none !important;
+    }
+
+    #logo-home {
+        padding-left: 0;
+    }
+
+    .container-fluid {
+        padding: 0px 05%;
+    }
+
+    #menuOpen {
+        display: flex;
+    }
+
+    #ctImg {
+        margin-top: 125%;
+        display: block;
+    }
+
+    .responsive-aviao {
+        height: 85px;
+        width: auto;
+        position: absolute;
+        margin-top: 40%;
+    }
+
+    .responsive-image {
+        height: 250px;
+        width: auto !important;
+    }
+
+    .text-home-page h1 {
+        font-size: 2.2em;
+    }
+
+    .text-home-page h6 {
+        font-size: 0.89em;
+        font-weight: 200;
+    }
+
+    .txt_home {
+        width: 100%;
+        margin-left: auto !important;
+        justify-content: center;
+        align-items: center;
+        display: flex;
+        padding: 0px 2%;
+    }
+
+    .planet-home {
+        right: -15px;
+    }
+
+    .ct_planet_home {
+        justify-content: center;
+        align-items: center;
+        display: flex;
+    }
+
+    .planet-aviao {
+        right: 0;
+    }
+
+    .mt-5 {
+        margin-top: 0.3rem !important;
+    }
+
+    .mt-4 {
+        margin-top: 0.4rem !important;
+    }
+
+    .text-home-page h1, .text-home-page h6 {
+        text-align: center;
+    }
+
+    .btn-service {
+        justify-content: center;
+        align-items: center;
+        display: flex;
+    }
+}
+
+@media screen and (min-width: 320px) and (max-width: 359px) {
+
+    .titleService h2 {
+        font-size: 1em;
+    }
+
+    .slider {
+        width: 100%;
+    }
+
+    #msg_retorno {
+        width: 95%;
+        position: absolute;
+    }
+
+    .ct-feedbacks-flex {
+        display: block;
+    }
+
+    .ct-feed-contato {
+        width: 100%;
+    }
+
+    #esc-ler-mais-mvv {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    #esc-mvv {
+        display: none;
+    }
+
+    .ct-itens-bot {
+        display: block;
+    }
+
+    .mvv-itens-top {
+        text-align: center;
+    }
+
+    .mvv-text {
+        text-align: center;
+        width: 100%;
+    }
+
+    .mvv-icons {
+        width: 100%;
+    }
+
+    .mvv-icons iframe {
+        height: 300px;
+    }
+
+    .nossa-hist-icon iframe {
+        height: 200px;
+    }
+
+    .ct-nossos-parceiros {
+        margin-top: 15px;
+    }
+
+    .ct-nossa-hist {
+        display: block;
+    }
+
+    #esc-ler-mais {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .nossa-hist-icon {
+        width: 100%;
+    }
+
+    .nossa-hist-text {
+        width: 100%;
+        text-align: center;
+    }
+
+    #esc-nossa-hist {
+        display: none;
+    }
+
+    .ct-nossos-parceiros-text {
+        padding: 1% 5%;
+    }
+
+    .contato-rede {
+        padding: 0px 1%;
+    }
+
+    .duvidas-frequentes {
+        padding: 0 05%;
+    }
+
+    .duv {
+        padding: 01% 05%;
+    }
+
+    #ct-servicos::before {
+        background-image: none;
+    }
+
+    #ct-contatos::before {
+        background-image: none;
+    }
+
+    #navbarNavRedes, #navbarNavMenu {
+        display: none !important;
+    }
+
+    #logo-home {
+        padding-left: 0;
+    }
+
+    .container-fluid {
+        padding: 0px 05%;
+    }
+
+    #menuOpen {
+        display: flex;
+    }
+
+    #ctImg {
+        margin-top: 125%;
+        display: block;
+    }
+
+    .responsive-aviao {
+        height: 85px;
+        width: auto;
+        position: absolute;
+        margin-top: 35%;
+    }
+
+    .responsive-image {
+        height: 300px;
+        width: auto !important;
+    }
+
+    .text-home-page h1 {
+        font-size: 2.2em;
+    }
+
+    .text-home-page h6 {
+        font-size: 0.89em;
+        font-weight: 200;
+    }
+
+    .txt_home {
+        width: 100%;
+        margin-left: auto !important;
+        justify-content: center;
+        align-items: center;
+        display: flex;
+        padding: 0px 2%;
+    }
+
+    .planet-home {
+        right: -15px;
+    }
+
+    .ct_planet_home {
+        justify-content: center;
+        align-items: center;
+        display: flex;
+    }
+
+    .planet-aviao {
+        right: 0;
+    }
+
+    .mt-5 {
+        margin-top: 0.3rem !important;
+    }
+
+    .mt-4 {
+        margin-top: 0.4rem !important;
+    }
+
+    .text-home-page h1, .text-home-page h6 {
+        text-align: center;
+    }
+
+    .btn-service {
+        justify-content: center;
+        align-items: center;
+        display: flex;
+    }
+}
+
+@media screen and (min-width: 360px) and (max-width: 379px) {
+
+    .titleService h2 {
+        font-size: 1em;
+    }
+
+    .slider {
+        width: 100%;
+    }
+
+    #msg_retorno {
+        width: 95%;
+        position: absolute;
+    }
+
+    .ct-feedbacks-flex {
+        display: block;
+    }
+
+    .ct-feed-contato {
+        width: 100%;
+    }
+
+
+    #esc-ler-mais-mvv {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    #esc-mvv {
+        display: none;
+    }
+
+    .ct-itens-bot {
+        display: block;
+    }
+
+    .mvv-itens-top {
+        text-align: center;
+    }
+
+    .mvv-text {
+        text-align: center;
+        width: 100%;
+    }
+
+    .mvv-icons {
+        width: 100%;
+    }
+
+    .mvv-icons iframe {
+        height: 300px;
+    }
+
+    .nossa-hist-icon iframe {
+        height: 200px;
+    }
+
+    .ct-nossos-parceiros {
+        margin-top: 15px;
+    }
+
+    .ct-nossa-hist {
+        display: block;
+    }
+
+    #esc-ler-mais {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .nossa-hist-icon {
+        width: 100%;
+    }
+
+    .nossa-hist-text {
+        width: 100%;
+        text-align: center;
+    }
+
+    #esc-nossa-hist {
+        display: none;
+    }
+
+    .ct-nossos-parceiros-text {
+        padding: 1% 5%;
+    }
+
+    .contato-rede {
+        padding: 0px 1%;
+    }
+
+    .duvidas-frequentes {
+        padding: 0 05%;
+    }
+
+    .duv {
+        padding: 01% 05%;
+    }
+
+    #ct-servicos::before {
+        background-image: none;
+    }
+
+    #ct-contatos::before {
+        background-image: none;
+    }
+
+    #navbarNavRedes, #navbarNavMenu {
+        display: none !important;
+    }
+
+    #logo-home {
+        padding-left: 0;
+    }
+
+    .container-fluid {
+        padding: 0px 05%;
+    }
+
+    #menuOpen {
+        display: flex;
+    }
+
+    #ctImg {
+        margin-top: 95%;
+        display: block;
+    }
+
+    .responsive-aviao {
+        height: 100px;
+        width: auto;
+        position: absolute;
+        margin-top: 30%;
+    }
+
+    .responsive-image {
+        height: 360px;
+        width: auto !important;
+    }
+
+    .text-home-page h1 {
+        font-size: 2.2em;
+    }
+
+    .text-home-page h6 {
+        font-size: 0.89em;
+        font-weight: 200;
+    }
+
+    .txt_home {
+        width: 100%;
+        margin-left: auto !important;
+        justify-content: center;
+        align-items: center;
+        display: flex;
+        padding: 0px 2%;
+    }
+
+    .planet-home {
+        right: -15px;
+    }
+
+    .ct_planet_home {
+        justify-content: center;
+        align-items: center;
+        display: flex;
+    }
+
+    .planet-aviao {
+        right: 0;
+    }
+
+    .mt-5 {
+        margin-top: 0.3rem !important;
+    }
+
+    .mt-4 {
+        margin-top: 0.4rem !important;
+    }
+
+    .text-home-page h1, .text-home-page h6 {
+        text-align: center;
+    }
+
+    .btn-service {
+        justify-content: center;
+        align-items: center;
+        display: flex;
+    }
+}
+
+@media screen and (min-width: 380px) and (max-width: 429px) {
+
+    .titleService h2 {
+        font-size: 1em;
+    }
+
+    .slider {
+        width: 100%;
+    }
+
+
+    #msg_retorno {
+        width: 95%;
+        position: absolute;
+    }
+
+    .ct-feedbacks-flex {
+        display: block;
+    }
+
+    .ct-feed-contato {
+        width: 100%;
+    }
+
+
+    #esc-ler-mais-mvv {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    #esc-mvv {
+        display: none;
+    }
+
+    .ct-itens-bot {
+        display: block;
+    }
+
+    .mvv-itens-top {
+        text-align: center;
+    }
+
+    .mvv-text {
+        text-align: center;
+        width: 100%;
+    }
+
+    .mvv-icons {
+        width: 100%;
+    }
+
+    .mvv-icons iframe {
+        height: 300px;
+    }
+
+    .ct-nossa-hist {
+        display: block;
+    }
+
+    #esc-ler-mais {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .nossa-hist-icon {
+        width: 100%;
+    }
+
+    .nossa-hist-text {
+        width: 100%;
+        text-align: center;
+    }
+
+    #esc-nossa-hist {
+        display: none;
+    }
+
+    .ct-nossos-parceiros-text {
+        padding: 1% 5%;
+    }
+
+    .contato-rede {
+        padding: 0px 1%;
+    }
+
+    .duvidas-frequentes {
+        padding: 0 05%;
+    }
+
+    .duv {
+        padding: 01% 05%;
+    }
+
+    #ct-servicos::before {
+        background-image: none;
+    }
+
+    #ct-contatos::before {
+        background-image: none;
+    }
+
+    #navbarNavRedes, #navbarNavMenu {
+        display: none !important;
+    }
+
+    #logo-home {
+        padding-left: 0;
+    }
+
+    .container-fluid {
+        padding: 0px 05%;
+    }
+
+    #menuOpen {
+        display: flex;
+    }
+
+    #ctImg {
+        margin-top: 90%;
+        display: block;
+    }
+
+    .responsive-aviao {
+        height: 100px;
+        width: auto;
+        position: absolute;
+        margin-top: 25%;
+    }
+
+    .responsive-image {
+        height: 360px;
+        width: auto !important;
+    }
+
+    .text-home-page h1 {
+        font-size: 2.2em;
+    }
+
+    .text-home-page h6 {
+        font-size: 0.89em;
+        font-weight: 200;
+    }
+
+    .txt_home {
+        width: 100%;
+        margin-left: auto !important;
+        justify-content: center;
+        align-items: center;
+        display: flex;
+        padding: 0px 2%;
+    }
+
+    .planet-home {
+        right: -15px;
+    }
+
+    .ct_planet_home {
+        justify-content: center;
+        align-items: center;
+        display: flex;
+    }
+
+    .planet-aviao {
+        right: 0;
+    }
+
+    .mt-5 {
+        margin-top: 0.3rem !important;
+    }
+
+    .mt-4 {
+        margin-top: 0.4rem !important;
+    }
+
+    .text-home-page h1, .text-home-page h6 {
+        text-align: center;
+    }
+
+    .btn-service {
+        justify-content: center;
+        align-items: center;
+        display: flex;
+    }
+}
+
+@media screen and (min-width: 430px) and (max-width: 459px) {
+
+    .titleService h2 {
+        font-size: 1em;
+    }
+
+    .slider {
+        width: 100%;
+    }
+
+
+    #msg_retorno {
+        width: 95%;
+        position: absolute;
+    }
+
+    .ct-feedbacks-flex {
+        display: block;
+    }
+
+    .ct-feed-contato {
+        width: 100%;
+    }
+
+
+    #esc-ler-mais-mvv {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    #esc-mvv {
+        display: none;
+    }
+
+    .ct-itens-bot {
+        display: block;
+    }
+
+    .mvv-itens-top {
+        text-align: center;
+    }
+
+    .mvv-text {
+        text-align: center;
+        width: 100%;
+    }
+
+    .mvv-icons {
+        width: 100%;
+    }
+
+    .mvv-icons iframe {
+        height: 300px;
+    }
+
+    .ct-nossa-hist {
+        display: block;
+    }
+
+    #esc-ler-mais {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .nossa-hist-icon {
+        width: 100%;
+    }
+
+    .nossa-hist-text {
+        width: 100%;
+        text-align: center;
+    }
+
+    #esc-nossa-hist {
+        display: none;
+    }
+
+    .ct-nossos-parceiros-text {
+        padding: 1% 5%;
+    }
+
+    .contato-rede {
+        padding: 0px 1%;
+    }
+
+    .duvidas-frequentes {
+        padding: 0 05%;
+    }
+
+    .duv {
+        padding: 01% 05%;
+    }
+
+    #ct-servicos::before {
+        background-image: none;
+    }
+
+    #ct-contatos::before {
+        background-image: none;
+    }
+
+    #navbarNavRedes, #navbarNavMenu {
+        display: none !important;
+    }
+
+    #logo-home {
+        padding-left: 0;
+    }
+
+    .container-fluid {
+        padding: 0px 05%;
+    }
+
+    #menuOpen {
+        display: flex;
+    }
+
+    #ctImg {
+        margin-top: 80%;
+        display: block;
+    }
+
+    .responsive-aviao {
+        height: 100px;
+        width: auto;
+        position: absolute;
+        margin-top: 20%;
+    }
+
+    .responsive-image {
+        height: 360px;
+        width: auto !important;
+    }
+
+    .text-home-page h1 {
+        font-size: 2.2em;
+    }
+
+    .text-home-page h6 {
+        font-size: 0.89em;
+        font-weight: 200;
+    }
+
+    .txt_home {
+        width: 100%;
+        margin-left: auto !important;
+        justify-content: center;
+        align-items: center;
+        display: flex;
+        padding: 0px 2%;
+    }
+
+    .planet-home {
+        right: -15px;
+    }
+
+    .ct_planet_home {
+        justify-content: center;
+        align-items: center;
+        display: flex;
+    }
+
+    .planet-aviao {
+        right: 0;
+    }
+
+    .mt-5 {
+        margin-top: 0.3rem !important;
+    }
+
+    .mt-4 {
+        margin-top: 0.4rem !important;
+    }
+
+    .text-home-page h1, .text-home-page h6 {
+        text-align: center;
+    }
+
+    .btn-service {
+        justify-content: center;
+        align-items: center;
+        display: flex;
+    }
+}
+
+@media screen and (min-width: 460px) and (max-width: 499px) {
+
+    .titleService h2 {
+        font-size: 1em;
+    }
+
+    .slider {
+        width: 100%;
+    }
+
+
+    #msg_retorno {
+        width: 95%;
+        position: absolute;
+    }
+
+    .ct-feedbacks-flex {
+        display: block;
+    }
+
+    .ct-feed-contato {
+        width: 100%;
+    }
+
+
+    #esc-ler-mais-mvv {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    #esc-mvv {
+        display: none;
+    }
+
+    .ct-itens-bot {
+        display: block;
+    }
+
+    .mvv-itens-top {
+        text-align: center;
+    }
+
+    .mvv-text {
+        text-align: center;
+        width: 100%;
+    }
+
+    .mvv-icons {
+        width: 100%;
+    }
+
+    .mvv-icons iframe {
+        height: 300px;
+    }
+
+    .ct-nossa-hist {
+        display: block;
+    }
+
+    #esc-ler-mais {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .nossa-hist-icon {
+        width: 100%;
+    }
+
+    .nossa-hist-text {
+        width: 100%;
+        text-align: center;
+    }
+
+    #esc-nossa-hist {
+        display: none;
+    }
+
+    .ct-nossos-parceiros-text {
+        padding: 1% 5%;
+    }
+
+    .contato-rede {
+        padding: 0px 1%;
+    }
+
+    .duvidas-frequentes {
+        padding: 0 05%;
+    }
+
+    .duv {
+        padding: 01% 05%;
+    }
+
+    #ct-servicos::before {
+        background-image: none;
+    }
+
+    #ct-contatos::before {
+        background-image: none;
+    }
+
+    #navbarNavRedes, #navbarNavMenu {
+        display: none !important;
+    }
+
+    #logo-home {
+        padding-left: 0;
+    }
+
+    .container-fluid {
+        padding: 0px 05%;
+    }
+
+    #menuOpen {
+        display: flex;
+    }
+
+    #ctImg {
+        margin-top: 70%;
+        display: block;
+    }
+
+    .responsive-aviao {
+        height: 100px;
+        width: auto;
+        position: absolute;
+        margin-top: 20%;
+    }
+
+    .responsive-image {
+        height: 360px;
+        width: auto !important;
+    }
+
+    .text-home-page h1 {
+        font-size: 2.2em;
+    }
+
+    .text-home-page h6 {
+        font-size: 0.89em;
+        font-weight: 200;
+    }
+
+    .txt_home {
+        width: 100%;
+        margin-left: auto !important;
+        justify-content: center;
+        align-items: center;
+        display: flex;
+        padding: 0px 2%;
+    }
+
+    .planet-home {
+        right: -15px;
+    }
+
+    .ct_planet_home {
+        justify-content: center;
+        align-items: center;
+        display: flex;
+    }
+
+    .planet-aviao {
+        right: 0;
+    }
+
+    .mt-5 {
+        margin-top: 0.3rem !important;
+    }
+
+    .mt-4 {
+        margin-top: 0.4rem !important;
+    }
+
+    .text-home-page h1, .text-home-page h6 {
+        text-align: center;
+    }
+
+    .btn-service {
+        justify-content: center;
+        align-items: center;
+        display: flex;
+    }
+}
+
+
+/* TABLEST OU MONITORES PEQUENOS */
+@media screen and (min-width: 500px) and (max-width: 599px) {
+
+    .titleService h2 {
+        font-size: 1em;
+    }
+
+    .slider {
+        width: 100%;
+    }
+
+
+    .ct-feedbacks-flex {
+        display: block;
+    }
+
+    .ct-feed-contato {
+        width: 100%;
+    }
+
+
+    #esc-ler-mais-mvv {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    #esc-mvv {
+        display: none;
+    }
+
+    .ct-itens-bot {
+        display: block;
+    }
+
+    .mvv-itens-top {
+        text-align: center;
+    }
+
+    .mvv-text {
+        text-align: center;
+        width: 100%;
+    }
+
+    .mvv-icons {
+        width: 100%;
+    }
+
+    .mvv-icons iframe {
+        height: 300px;
+    }
+
+    .nossa-hist-icon {
+        order: 2;
+    }
+
+    .nossa-hist-text {
+        order: 1;
+    }
+
+    .ct-nossa-hist {
+        display: grid;
+    }
+
+    #esc-ler-mais {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .nossa-hist-icon {
+        width: 100%;
+    }
+
+    .nossa-hist-text {
+        width: 100%;
+        text-align: center;
+    }
+
+    #esc-nossa-hist {
+        display: none;
+    }
+
+    .duvidas-frequentes {
+        padding: 0 05%;
+    }
+
+    .duv {
+        padding: 01% 05%;
+    }
+
+    #ct-servicos::before {
+        background-image: none;
+    }
+
+    #ct-contatos::before {
+        background-image: none;
+    }
+
+    #navbarNavRedes, #navbarNavMenu {
+        display: none !important;
+    }
+
+    #logo-home {
+        padding-left: 0;
+    }
+
+    .container-fluid {
+        padding: 0px 05%;
+    }
+
+    #menuOpen {
+        display: flex;
+    }
+
+    #ctImg {
+        margin-top: 70%;
+        display: block;
+    }
+
+    .responsive-aviao {
+        height: 120px;
+        width: auto;
+        position: absolute;
+        margin-top: 20%;
+    }
+
+    .responsive-image {
+        height: 450px;
+        width: auto !important;
+    }
+
+    .text-home-page h1 {
+        font-size: 2.4em;
+    }
+
+    .text-home-page h6 {
+        font-size: 0.89em;
+        font-weight: 200;
+    }
+
+    .txt_home {
+        width: 100%;
+        margin-left: auto !important;
+        justify-content: center;
+        align-items: center;
+        display: flex;
+    }
+
+    .planet-home {
+        right: -15px;
+    }
+
+    .ct_planet_home {
+        justify-content: center;
+        align-items: center;
+        display: flex;
+    }
+
+    .planet-aviao {
+        right: 0;
+    }
+
+    .mt-5 {
+        margin-top: 0.3rem !important;
+    }
+
+    .mt-4 {
+        margin-top: 0.4rem !important;
+    }
+
+    .text-home-page h1, .text-home-page h6 {
+        text-align: center;
+    }
+
+    .btn-service {
+        justify-content: center;
+        align-items: center;
+        display: flex;
+    }
+}
+
+@media screen and (min-width: 600px) and (max-width: 669px) {
+
+    .titleService h2 {
+        font-size: 1em;
+    }
+
+    .slider {
+        width: 100%;
+    }
+
+
+    .ct-feedbacks-flex {
+        display: block;
+    }
+
+    .ct-feed-contato {
+        width: 100%;
+    }
+
+
+    #esc-ler-mais-mvv {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    #esc-mvv {
+        display: none;
+    }
+
+    .ct-itens-bot {
+        display: block;
+    }
+
+    .mvv-itens-top {
+        text-align: center;
+    }
+
+    .mvv-text {
+        text-align: center;
+        width: 100%;
+    }
+
+    .mvv-icons {
+        width: 100%;
+    }
+
+    .mvv-icons iframe {
+        height: 300px;
+    }
+
+    .nossa-hist-icon {
+        order: 2;
+    }
+
+    .nossa-hist-text {
+        order: 1;
+    }
+
+    .ct-nossa-hist {
+        display: grid;
+    }
+
+    #esc-ler-mais {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .nossa-hist-icon {
+        width: 100%;
+    }
+
+    .nossa-hist-text {
+        width: 100%;
+        text-align: center;
+    }
+
+    #esc-nossa-hist {
+        display: none;
+    }
+
+    .duvidas-frequentes {
+        padding: 0 05%;
+    }
+
+    .duv {
+        padding: 01% 05%;
+    }
+
+    #ct-servicos::before {
+        background-image: none;
+    }
+
+    #ct-contatos::before {
+        background-image: none;
+    }
+
+    #navbarNavRedes, #navbarNavMenu {
+        display: none !important;
+    }
+
+    #logo-home {
+        padding-left: 0;
+    }
+
+    .container-fluid {
+        padding: 0px 05%;
+    }
+
+    #menuOpen {
+        display: flex;
+    }
+
+    #ctImg {
+        margin-top: 55%;
+        display: block;
+    }
+
+    .responsive-aviao {
+        height: 120px;
+        width: auto;
+        position: absolute;
+        margin-top: 25%;
+    }
+
+    .responsive-image {
+        height: 450px;
+        width: auto !important;
+    }
+
+    .text-home-page h1 {
+        font-size: 2.4em;
+    }
+
+    .text-home-page h6 {
+        font-size: 0.89em;
+        font-weight: 200;
+    }
+
+    .txt_home {
+        width: 100%;
+        margin-left: auto !important;
+        justify-content: center;
+        align-items: center;
+        display: flex;
+    }
+
+    .planet-home {
+        right: -15px;
+    }
+
+    .ct_planet_home {
+        justify-content: center;
+        align-items: center;
+        display: flex;
+    }
+
+    .planet-aviao {
+        right: 0;
+    }
+
+    .mt-5 {
+        margin-top: 0.3rem !important;
+    }
+
+    .mt-4 {
+        margin-top: 0.4rem !important;
+    }
+
+    .text-home-page h1, .text-home-page h6 {
+        text-align: center;
+    }
+
+    .btn-service {
+        justify-content: center;
+        align-items: center;
+        display: flex;
+    }
+}
+
+@media screen and (min-width: 670px) and (max-width: 749px) {
+
+    .slider {
+        width: 100%;
+    }
+
+
+    .ct-feedbacks-flex {
+        display: block;
+    }
+
+    .ct-feed-contato {
+        width: 100%;
+    }
+
+
+    #esc-ler-mais-mvv {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    #esc-mvv {
+        display: none;
+    }
+
+    .ct-itens-bot {
+        display: block;
+    }
+
+    .mvv-itens-top {
+        text-align: center;
+    }
+
+    .mvv-text {
+        text-align: center;
+        width: 100%;
+    }
+
+    .mvv-icons {
+        width: 100%;
+    }
+
+    .mvv-icons iframe {
+        height: 300px;
+    }
+
+    .nossa-hist-icon {
+        order: 2;
+    }
+
+    .nossa-hist-text {
+        order: 1;
+    }
+
+    .ct-nossa-hist {
+        display: grid;
+    }
+
+    #esc-ler-mais {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .nossa-hist-icon {
+        width: 100%;
+    }
+
+    .nossa-hist-text {
+        width: 100%;
+        text-align: center;
+    }
+
+    #esc-nossa-hist {
+        display: none;
+    }
+
+    .duvidas-frequentes {
+        padding: 0 05%;
+    }
+
+    .duv {
+        padding: 01% 05%;
+    }
+
+    #ct-servicos::before {
+        background-image: none;
+    }
+
+    #ct-contatos::before {
+        background-image: none;
+    }
+
+    #navbarNavRedes, #navbarNavMenu {
+        display: none !important;
+    }
+
+    #logo-home {
+        padding-left: 0;
+    }
+
+    .container-fluid {
+        padding: 0px 05%;
+    }
+
+    #menuOpen {
+        display: flex;
+    }
+
+    #ctImg {
+        margin-top: 34%;
+    }
+
+    .responsive-aviao {
+        height: 100px;
+    }
+
+    .responsive-image {
+        height: 400px;
+    }
+
+    .text-home-page h1 {
+        font-size: 2.8em;
+    }
+
+    .text-home-page h6 {
+        font-size: 1em;
+        font-weight: 200;
+    }
+
+    .txt_home {
+        width: 305px;
+        margin-left: 05%;
+    }
+
+    .planet-home {
+        right: -50px;
+    }
+
+    .planet-aviao {
+        right: -75%;
+    }
+}
+
+@media screen and (min-width: 750px) and (max-width: 899px) {
+
+    .slider {
+        width: 100%;
+    }
+
+
+    .ct-feedbacks-flex {
+        display: block;
+    }
+
+    .ct-feed-contato {
+        width: 100%;
+    }
+
+
+    #esc-ler-mais-mvv {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    #esc-mvv{
+        display: none;
+    }
+
+    .ct-itens-bot {
+        display: block;
+    }
+
+    .mvv-itens-top {
+        text-align: center;
+    }
+
+    .mvv-text {
+        text-align: center;
+        width: 100%;
+    }
+
+    .mvv-icons {
+        width: 100%;
+    }
+
+    .mvv-icons iframe {
+        height: 300px;
+    }
+
+    .nossa-hist-icon {
+        order: 2;
+    }
+
+    .nossa-hist-text {
+        order: 1;
+    }
+
+    .ct-nossa-hist {
+        display: grid;
+    }
+
+    #esc-ler-mais {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .nossa-hist-icon {
+        width: 100%;
+    }
+
+    .nossa-hist-text {
+        width: 100%;
+        text-align: center;
+    }
+
+    #esc-nossa-hist {
+        display: none;
+    }
+
+    .duvidas-frequentes {
+        padding: 0 05%;
+    }
+
+    .duv {
+        padding: 01% 05%;
+    }
+
+    #ct-servicos::before {
+        background-image: none;
+    }
+
+    #ct-contatos::before {
+        background-image: none;
+    }
+
+    #navbarNavRedes, #navbarNavMenu {
+        display: none !important;
+    }
+
+    #logo-home {
+        padding-left: 0;
+    }
+
+    .container-fluid {
+        padding: 0px 05%;
+    }
+
+    #menuOpen {
+        display: flex;
+    }
+
+    #ctImg {
+        margin-top: 15%;
+    }
+
+    .responsive-aviao {
+        height: 100px;
+    }
+
+    .responsive-image {
+        height: 465px;
+    }
+
+    .text-home-page h1 {
+        font-size: 2.8em;
+    }
+
+    .text-home-page h6 {
+        font-size: 1em;
+        font-weight: 200;
+    }
+
+    .txt_home {
+        width: 320px;
+        margin-left: 05%;
+    }
+
+    .planet-home {
+        right: -50px;
+    }
+
+    .planet-aviao {
+        right: -100%;
+    }
+}
+
+
+/* DESKTOPS */
+@media screen and (min-width: 900px) and (max-width: 990px) {
+    /* REMOVE FUNDO */
+    #ct-servicos::before {
+        background-image: none;
+    }
+}
+
+@media screen and (min-width: 900px) and (max-width: 1023px) {
+    .slider {
+        width: 100%;
+    }
+
+    #esc-ler-mais {
+        display: flex;
+        align-items: center;
+        justify-content: left;
+    }
+
+    .nossa-hist-text {
+        padding: 0 5%;
+    }
+
+    .ct-nossa-hist {
+        padding: 1% 1%;
+    }
+
+    #esc-nossa-hist {
+        display: none;
+    }
+
+    #navbarNavRedes, #navbarNavMenu {
+        display: none !important;
+    }
+
+    .txt_home {
+        margin-left: 100px;
+    }
+
+    #logo-home {
+        padding-left: 0;
+    }
+
+    .container-fluid {
+        padding: 0px 05%;
+    }
+
+    #menuOpen {
+        display: flex;
+    }
+
+    #ctImg {
+        margin-top: 10%;
+    }
+
+    .responsive-aviao {
+        height: 100px;
+    }
+
+    .responsive-image {
+        height: 470px;
+    }
+
+    .text-home-page h1 {
+        font-size: 2.8em;
+    }
+
+    .text-home-page h6 {
+        font-size: 1em;
+        font-weight: 200;
+    }
+
+    .txt_home {
+        width: 315px;
+    }
+
+    .planet-home {
+        right: -50px;
+    }
+
+    .planet-aviao {
+        right: -100%;
+    }
+}
+
+@media screen and (min-width: 1024px) and (max-width: 1280px) {
+
+    #esc-ler-mais-mvv {
+        display: none;
+    }
+
+    .responsive-image {
+        height: 450px;
+    }
+
+    #ctImg {
+        margin-top: 10%;
+    }
+
+    .responsive-aviao {
+        height: 120px;
+    }
+
+    .text-home-page h1 {
+        font-size: 3em;
+    }
+
+    .text-home-page h6 {
+        font-size: 1em;
+        font-weight: 200;
+    }
+
+    .txt_home {
+        width: 450px;
+    }
+}
+
+
+
+
+@keyframes float {
+    0% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
+}
+
+.planet-home {
+    animation: float 5s ease-in-out infinite;
+}
+
+.planet-aviao {
+    animation: float 3.5s ease-in-out infinite;
+}

@@ -1,0 +1,725 @@
+﻿@{
+	ViewData["Title"] = "Vegas Transportes Serviços";
+}
+<script src="path/to/gzappy-js.min.js"></script>
+
+<html>
+<head>
+	<!-- Icon nav bar -->
+	<link rel="shortcut icon" href="" type="image/x-icon">
+
+	<title>Embarque Aereo</title>
+
+</head>
+<body>
+	<form id="form" method="post" autocomplete="off">
+		<div class="container">
+
+			<div class="mt-2" id="msg_retorno_ctn">
+
+				<h1 class="mb-4"><img id="logo" src="~/css/img/logo.png" /></h1>
+
+				<div class="col-md-12 col-lg-12" id="msg_retorno">
+					<div id="msg_exibicao"></div>
+				</div>
+
+			</div>
+
+			<!-- Dados da coleta  -->
+			<div id="ddColeta" class="row mb-2">
+
+				<div class="titleService">
+					<h2 class="mb-2">Dados da coleta</h2>
+					<a class="itemBack" href="@Url.Action("Index", "Servicos")">
+						<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-arrow-left-circle" viewBox="0 0 16 16">
+							<path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8m15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-4.5-.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5z" />
+						</svg>
+					</a>
+				</div>
+
+				<div class="col-md-6">
+					<div class="form-group">
+						<label for="Nome">Nome completo do remetente <label class="obrigatorio">*</label></label>
+						<input required="required" type="text" class="form-control" id="Nome" name="Nome" placeholder="Digite seu nome" maxlength="50">
+					</div>
+				</div>
+				<div class="col-md-6">
+					<div class="form-group">
+						<label for="CPF">CNPJ <label class="obrigatorio">*</label></label>
+						<input required="required" type="text" class="form-control" id="CPF" name="CPF" placeholder="Insira o seu CNPJ. Ex: 14.360.636/0001-59" onkeypress="apenasNumeros(event)" onchange="mascaraCPF();" maxlength="14">
+					</div>
+				</div>
+				<div class="col-md-6">
+					<div class="form-group">
+						<label for="Retirada">Retirada <label class="obrigatorio">*</label></label>
+						<select required="required" id="Retirada" class="form-control" name="Retirada" onchange="selecionaForm();">
+							<option value=""selected>Selecione</option>
+							<option value="hotel">Quero que retire no Hotel</option>
+							<option value="lojaEst">Quero que retire em Loja / Estabelecimento</option>
+							<option value="aeroporto">Quero levar até você</option>
+							<option value="acessoria">Retirar com minha assessoria</option>
+						</select>
+					</div>
+				</div>
+				<div class="col-md-6">
+					<div class="form-group">
+						<label for="RazaoSocial">Razão Social <label class="obrigatorio">*</label></label>
+						<input required="required" type="text" class="form-control" id="RazaoSocial" name="RazaoSocial" placeholder="Insira sua razão social. Ex: LDK Comercios Atacadista e Varejo Ltda." maxlength="100">
+					</div>
+				</div>
+			</div>
+
+
+
+			<!-- Formulario Hotel -->
+			<div id="formHotel" class="row mb-4">
+
+				<div class="col-md-2">
+					<div class="form-group">
+						<label for="Matricula">Tipo de serviço </label>
+						<input required="required" type="text" class="form-control" id="TxServiço" name="TxServiço" placeholder="" maxlength="255" disabled value="24 Horas">
+					</div>
+				</div>
+
+				<div class="col-md-4">
+					<div class="form-group">
+						<label for="Retirada">Hotel <label class="obrigatorio">*</label></label>
+						<select required="required" id="Hotel" class="form-control" name="hotel">
+							<option value="" selected>Selecione</option>
+							<option value="bras-palace">Brás Palace Hotel</option>
+							<option value="luz-plaza">Luz Plaza São Paulo</option>
+							<option value="hotel-makuxis">Hotel Makuxis</option>
+							<option value="hotel-nacional-inn">Hotel Nacional Inn São Paulo</option>
+							<option value="pousada-recanto-bras">Pousada Recanto do Brás</option>
+							<option value="hotel-victoria">Hotel Victoria</option>
+							<option value="pousada-bras-feira-madrugada">Pousada HazBrás - Feira da Madrugada</option>
+							<option value="hotel-normandie">Hotel Normandie</option>
+							<option value="hotel-family">Hotel Family</option>
+							<option value="hotel-travel-inn-bras">Hotel Travel Inn Brás</option>
+							<option value="shopping-tupan">Shopping Tupan</option>
+						</select>
+					</div>
+				</div>
+
+				<div class="col-md-3">
+					<div class="form-group">
+						<label for="Nome">N° Quarto <label class="obrigatorio">*</label></label>
+						<input required="required" type="text" class="form-control" id="n_hotel" name="n_hotel" placeholder="Insira o numero do quarto. Ex: 159" maxlength="4">
+					</div>
+				</div>
+
+				<div class="col-md-3">
+					<div class="form-group">
+						<label for="Nome">N° Andar <label class="obrigatorio">*</label></label>
+						<input required="required" type="text" class="form-control" id="n_andar" name="n_andar" placeholder="Insira o numero do andar. Ex: 04" maxlength="4">
+					</div>
+				</div>
+
+				<div class="mt-4">
+					<div class="col-md-12 col-lg-12 mb-4">
+						<div class="form-group">
+							<button type="button" id="" class="btn btn-primary" onclick="continuarDadosCarga();">
+								Continuar
+								<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right-circle" viewBox="0 0 16 16">
+									<path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8m15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0M4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5z" />
+								</svg>
+							</button>
+						</div>
+					</div>
+				</div>
+
+				<div class="mt-1" id="msg_avisoZero">
+					<div class="col-md-12 col-lg-12">
+						<label>Insira "0" para todas as informações desconhecidas ou não disponíveis.</label>
+					</div>
+				</div>
+
+			</div>
+
+			<!-- Formulario Loja / Estabelecimento -->
+			<div id="formLojaEst" class="row mb-4">
+
+				<div class="col-md-4">
+					<div class="form-group">
+						<label for="Cep">CEP <label class="obrigatorio">*</label></label>
+						<input required="required" type="text" class="form-control" id="CEP" name="CEP" onkeypress="apenasNumeros(event)" onchange="mascaraCEP();" placeholder="Insira o seu CEP. Ex: 123.45-67" maxlength="8">
+					</div>
+				</div>
+
+				<div class="col-md-6">
+					<div class="form-group">
+						<label for="Endereco">Endereço <label class="obrigatorio">*</label></label>
+						<input required="required" type="text" class="form-control" id="Endereco" name="Endereco" placeholder="Insira seu endereço. Ex: Rua Santos" maxlength="400">
+					</div>
+				</div>
+
+
+				<div class="col-md-2">
+					<div class="form-group">
+						<label for="Logradouro">Numero <label class="obrigatorio">*</label></label>
+						<input required="required" type="text" class="form-control" id="Logradouro" name="Logradouro" maxlength="50" placeholder="Insira o numero. Ex: 29">
+					</div>
+				</div>
+
+				<div class="col-md-4">
+					<div class="form-group">
+						<label for="vendedor_responsavel">Vendedor/Atendente <label class="obrigatorio">*</label></label>
+						<input required="required" type="text" class="form-control" id="vendedor_responsavel" name="vendedor_responsavel" placeholder="Ex: Gabriela Martins (Vendedora)" maxlength="200">
+					</div>
+				</div>
+
+				<div class="col-md-4">
+					<div class="form-group">
+						<label for="Funcionamento">Hora de funcionamento <label class="obrigatorio">*</label></label>
+						<input required="required" type="text" class="form-control" id="Funcionamento" name="Funcionamento" maxlength="50" placeholder="Ex: das 9:00h as 18:00h">
+					</div>
+				</div>
+
+				<div class="col-md-4">
+					<div class="form-group">
+						<label for="Referencia">Referencia <label class="obrigatorio">*</label></label>
+						<input required="required" type="text" class="form-control" id="Referencia" name="Referencia" maxlength="50" placeholder="Ex: Box, Loja, Padaria">
+					</div>
+				</div>
+
+				<div class="mt-4">
+					<div class="col-md-12 col-lg-12 mb-4">
+						<div class="form-group">
+							<button type="button" id="" class="btn btn-primary" onclick="continuarDadosCarga();">
+								Continuar
+								<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right-circle" viewBox="0 0 16 16">
+									<path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8m15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0M4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5z" />
+								</svg>
+							</button>
+						</div>
+					</div>
+				</div>
+
+				<div class="mt-1" id="msg_avisoZero">
+					<div class="col-md-12 col-lg-12">
+						<label>Insira "0" para todas as informações desconhecidas ou não disponíveis.</label>
+					</div>
+				</div>
+
+
+			</div>
+
+			<!-- Formulario Eu entrego -->
+			<div id="formEuEntrego" class="row mb-4">
+
+				<div class="col-md-2">
+					<div class="form-group">
+						<label for="Tipo de Serviço">Tipo de serviço <label class="obrigatorio">*</label></label>
+						<input required="required" type="text" class="form-control" id="TipoServiço" name="TipoServiço" placeholder="" maxlength="255" disabled value="24 Horas">
+					</div>
+				</div>
+
+				<div class="col-md-4">
+					<div class="form-group">
+						<label for="Retirada">Base Vegas <label class="obrigatorio">*</label></label>
+						<select required="required" id="Base" class="form-control" name="Base" onchange="selecionaBase();">
+							<option value="" selected>Selecione</option>
+							<option value="galpao">Galpão 01</option>
+							<option value="sede">Sede da vegas</option>
+							<option value="aeroporto">Cargas de Emergências</option>
+						</select>
+					</div>
+				</div>
+
+				<div class="col-md-6">
+					<div class="form-group">
+						<label for="nome_entregador">Nome de quem vai entregar <label class="obrigatorio">*</label></label>
+						<input required="required" type="text" class="form-control" id="nome_entregador" name="nome_entregador" placeholder="Ex: Entregador / Cpf do Entregador" maxlength="255">
+					</div>
+				</div>
+
+				<div class="col-md-8">
+					<div class="form-group">
+						<label for="end_base">Endereço <label class="obrigatorio">*</label></label>
+						<input required="required" type="text" class="form-control" id="end_base" name="end_base" placeholder="Escolha uma base" maxlength="100" disabled>
+					</div>
+				</div>
+
+				<div class="col-md-4">
+					<div class="form-group">
+						<label for="hr_base">Horario de coleta <label class="obrigatorio">*</label></label>
+						<input required="required" type="text" class="form-control" id="hr_base" name="hr_base" placeholder="Escolha uma base" maxlength="100" disabled>
+					</div>
+				</div>
+
+				<div class="mt-4">
+					<div class="col-md-12 col-lg-12 mb-4">
+						<div class="form-group">
+							<button type="button" id="" class="btn btn-primary" onclick="continuarDadosCarga();">
+								Continuar
+								<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right-circle" viewBox="0 0 16 16">
+									<path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8m15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0M4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5z" />
+								</svg>
+							</button>
+						</div>
+					</div>
+				</div>
+
+				<div class="mt-1" id="msg_avisoZero">
+					<div class="col-md-12 col-lg-12">
+						<label>Insira "0" para todas as informações desconhecidas ou não disponíveis.</label>
+					</div>
+				</div>
+
+			</div>
+
+
+
+			<!-- Dados da Carga -->
+			<div id="formDadosCarga" class="row mb-4">
+				<h2 class="mb-2">Dados da carga</h2>
+
+				<div class="col-md-4" id="tc_qtd_fardos">
+					<div class="form-group">
+						<label for="Altura">Quatidade de fardos <label class="obrigatorio">*</label></label>
+						<input required="required" type="text" class="form-control" id="qtd_fardos" name="qtd_fardos" placeholder="Ex: 3kg = 3" maxlength="5" onkeypress="apenasNumeros(event)" onchange="calculaMediaPeso();">
+					</div>
+				</div>
+
+				<div class="col-md-4" id="tc_media_peso_fardo">
+					<div class="form-group">
+						<label for="media_peso_fardo">Média de peso por fardo<label class="obrigatorio">*</label></label>
+						<input required="required" type="text" class="form-control" id="media_peso_fardo" name="media_peso_fardo" placeholder="Ex: 23kg = 23" maxlength="5" onchange="calculaMediaPeso();">
+					</div>
+				</div>
+
+				<div class="col-md-2" id="tc_largura">
+					<div class="form-group">
+						<label for="Largura">Largura <label class="obrigatorio">*</label></label>
+						<input required="required" type="text" class="form-control" id="Largura" name="Largura" placeholder="Ex: 155cm" maxlength="5">
+					</div>
+				</div>
+
+				<div class="col-md-2" id="tc_altura">
+					<div class="form-group">
+						<label for="Altura">Altura <label class="obrigatorio">*</label></label>
+						<input required="required" type="text" class="form-control" id="Altura" name="Altura" placeholder="Ex: 150cm" maxlength="5">
+					</div>
+				</div>
+
+				<div class="col-md-2" id="tc_diametro">
+					<div class="form-group">
+						<label for="Diametro">Diâmetro <label class="obrigatorio">*</label></label>
+						<input required="required" type="text" class="form-control" id="Diametro" name="Diametro" placeholder="Ex: 100cm" maxlength="5">
+					</div>
+				</div>
+
+				<div class="col-md-2" id="tc_volume">
+					<div class="form-group">
+						<label for="Volume">Volume <label class="obrigatorio">*</label></label>
+						<input required="required" type="text" class="form-control" id="Volume" name="Volume" placeholder="Ex: 01 Unidade" maxlength="5">
+					</div>
+				</div>
+
+				<div class="col-md-2">
+					<div class="form-group">
+						<label for="Peso">Peso</label>
+						<input required="required" type="text" class="form-control" id="Peso" name="Peso" placeholder="Ex: 10Kg = 10" maxlength="10" onkeypress="apenasNumeros(event)">
+					</div>
+				</div>
+
+				<div id="alinhaCheck" class="col-md-2">
+					<div class="form-group form-check">
+						<input type="checkbox" class="form-check-input" id="n_peso" name="n_peso" onclick="validaPeso();">
+						<label class="form-check-label" for="n_peso">&nbsp; Não sei o peso</label>
+					</div>
+				</div>
+
+				<div class="col-md-4 mt-2">
+					<div class="form-group">
+						<label for="TipoCarga">Categoria da Carga <label class="obrigatorio">*</label></label>
+						<select required="required" id="TipoCarga" class="form-control" name="TipoCarga" onchange="selecionaCategoriaCarga();">
+							<option value="" selected>Selecione</option>
+							<option value="confeccoes">Confecções</option>
+							<option value="eletronicos">Eletronicos</option>
+							<option value="Pereciveis">Perecíveis</option>
+							<option value="naoPereciveis">Não Perecíveis</option>
+							<option value="pecas">Peças</option>
+							<option value="vidro">Vidro</option>
+							<option value="cargaPerigosa">Carga Perigosa</option>
+							<option value="outros">Outros</option>
+						</select>
+					</div>
+				</div>
+
+				<div class="col-md-4 mt-2">
+					<div class="form-group">
+						<label for="valorCarga">Valor da carga <label class="obrigatorio">*</label></label>
+						<input required="required" type="text" class="form-control" id="valorCarga" name="valorCarga" placeholder="Ex: R$ 150,00" onkeypress="apenasNumeros(event)" maxlength="12">
+					</div>
+				</div>
+
+				<div class="col-md-4 mt-2">
+					<div class="form-group">
+						<label for="Descricao">Descrição <label class="obrigatorio">Opcional</label></label>
+						<input required="required" type="text" class="form-control" id="Descricao" name="Descricao" placeholder="Ex: Outras categorias de carga" maxlength="50">
+					</div>
+				</div>
+
+				<div class="mt-4">
+					<div class="col-md-12 col-lg-12">
+						<div class="form-group d-flex justify-content-between">
+							<button type="button" id="Voltar" class="btn btn-primary" onclick="voltarDadosColeta();">
+								<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left-circle" viewBox="0 0 16 16">
+									<path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8m15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-4.5-.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5z" />
+								</svg>
+								Voltar
+							</button>
+							<button type="button" id="Continuar" class="btn btn-primary" onclick="continuarDadosDestino();">
+								Continuar
+								<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right-circle" viewBox="0 0 16 16">
+									<path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8m15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0M4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5z" />
+								</svg>
+							</button>
+						</div>
+					</div>
+				</div>
+
+				<div class="mt-3" id="msg_avisoZero">
+					<div class="col-md-12 col-lg-12">
+						<label>Insira "0" para todas as informações desconhecidas ou não disponíveis.</label>
+					</div>
+				</div>
+
+			</div>
+
+
+			<!-- Dados do destinho -->
+			<div id="formDestino" class="row mb-4">
+				<h2 class="mb-2">Dados do destino</h2>
+				<div class="col-md-4">
+					<div class="form-group">
+						<label for="Estado">Estado <label class="obrigatorio">*</label></label>
+						<select required="required" id="Estado" class="form-control" name="Estado">
+							<option value="">Selecione um estado</option>
+							<option value="ac">Acre</option>
+							<option value="al">Alagoas</option>
+							<option value="ap">Amapá</option>
+							<option value="am">Amazonas</option>
+							<option value="ba">Bahia</option>
+							<option value="ce">Ceará</option>
+							<option value="df">Distrito Federal</option>
+							<option value="es">Espírito Santo</option>
+							<option value="go">Goiás</option>
+							<option value="ma">Maranhão</option>
+							<option value="mt">Mato Grosso</option>
+							<option value="ms">Mato Grosso do Sul</option>
+							<option value="mg">Minas Gerais</option>
+							<option value="pa">Pará</option>
+							<option value="pb">Paraíba</option>
+							<option value="pr">Paraná</option>
+							<option value="pe">Pernambuco</option>
+							<option value="pi">Piauí</option>
+							<option value="rj">Rio de Janeiro</option>
+							<option value="rn">Rio Grande do Norte</option>
+							<option value="rs">Rio Grande do Sul</option>
+							<option value="ro">Rondônia</option>
+							<option value="rr">Roraima</option>
+							<option value="sc">Santa Catarina</option>
+							<option value="sp">São Paulo</option>
+							<option value="se">Sergipe</option>
+							<option value="to">Tocantins</option>
+						</select>
+					</div>
+				</div>
+
+				<div class="col-md-4">
+					<div class="form-group">
+						<label for="Cidade">Cidade <label class="obrigatorio">*</label></label>
+						<input required="required" type="text" class="form-control" id="Cidade" name="Cidade" placeholder="Ex: São Paulo" maxlength="50">
+					</div>
+				</div>
+
+				<div class="col-md-4">
+					<div class="form-group">
+						<label for="Entrega">Entrega <label class="obrigatorio">*</label></label>
+						<select required="required" id="Entrega" class="form-control" name="Entrega" onchange="validaFormDestino();">
+							<option value="" selected>Selecione</option>
+							<option value="aeroportoProximo">Quero receber no aeroporto mais proximo.</option>
+							<option value="minhaCasaEntrega">Quero receber em minha casa.</option>
+							<option value="estabelecimentoLojaEntrega">Quero receber em meu estabelecimento.</option>
+						</select>
+					</div>
+				</div>
+			</div>
+
+			<!-- Formulario receber no aeroporto mais proximo -->
+			<div id="receberAeroportoProximo" class="row mb-4">
+				<div class="col-md-4">
+					<div class="form-group">
+						<label for="NomeParaRetirar">Nome de quem irá retirar no aeroporto <label class="obrigatorio">*</label></label>
+						<input required="required" type="text" class="form-control" id="NomeParaRetirar" name="NomeParaRetirar" placeholder="Ex: Guilherme Martins" maxlength="45">
+					</div>
+				</div>
+
+				<div class="col-md-3">
+					<div class="form-group">
+						<label for="CPFParaRetirar">CPF para retirar no aeroporto <label class="obrigatorio">*</label></label>
+						<input required="required" type="text" class="form-control" id="CPFParaRetirar" name="CPFParaRetirar" placeholder="Ex: 123.456.789-10" maxlength="11" onkeypress="apenasNumeros(event)" onchange="mascaraCPFEntrega();">
+					</div>
+				</div>
+
+				<div class="col-md-3">
+					<div class="form-group">
+						<label for="RGParaRetirar">RG para retirar no aeroporto <label class="obrigatorio">*</label></label>
+						<input required="required" type="text" class="form-control" id="RGParaRetirar" name="RGParaRetirar" placeholder="12.345.678-9" maxlength="9" onkeypress="apenasNumeros(event)" onchange="mascaraRgEntrega();">
+					</div>
+				</div>
+
+				<div class="col-md-2">
+					<div class="form-group">
+						<label for="Diametro">Horario <label class="obrigatorio">*</label></label>
+						<input type="text" class="form-control" value="Das 09hrs ás 19hrs" disabled>
+					</div>
+				</div>
+
+				<div class="mt-4">
+					<div class="col-md-12 col-lg-12">
+						<div class="form-group d-flex justify-content-between">
+							<button type="button" id="Voltar" class="btn btn-primary" onclick="voltarDadosCarga();">
+								<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left-circle" viewBox="0 0 16 16">
+									<path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8m15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-4.5-.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5z" />
+								</svg>
+								Voltar
+							</button>
+							<button type="button" id="Continuar" class="btn btn-primary" onclick="continuarParaContato();">
+								Continuar
+								<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right-circle" viewBox="0 0 16 16">
+									<path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8m15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0M4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5z" />
+								</svg>
+							</button>
+						</div>
+					</div>
+				</div>
+
+				<div class="mt-3" id="msg_avisoZero">
+					<div class="col-md-12 col-lg-12">
+						<label>Insira "0" para todas as informações desconhecidas ou não disponíveis.</label>
+					</div>
+				</div>
+
+			</div>
+			<!-- Formulario Minha Casa e Estabelecimento / Loja -->
+			<div id="receberEntrega" class="row mb-4">
+
+
+				<div class="col-md-2">
+					<div class="form-group">
+						<label for="Cep_entrega">CEP de entrega <label class="obrigatorio">*</label></label>
+						<input required="required" type="text" class="form-control" id="CEP_Entrega" name="CEP_Entrega" onkeypress="apenasNumeros(event)" onchange="mascaraCepEntrega();" placeholder="Ex: 123.45-67" maxlength="8">
+					</div>
+				</div>
+
+				<div class="col-md-6">
+					<div class="form-group">
+						<label for="Endereco_entrega">Endereco de Entrega <label class="obrigatorio">*</label></label>
+						<input required="required" type="text" class="form-control" id="Endereco_entrega" name="Endereco_entrega" placeholder="Ex: Av Bom Monte, 1912" maxlength="100">
+					</div>
+				</div>
+
+				<div class="col-md-1">
+					<div class="form-group">
+						<label for="log_entrega">Num <label class="obrigatorio">*</label></label>
+						<input type="text" class="form-control" placeholder="Ex: 105" id="num_entrega">
+					</div>
+				</div>
+
+				<div class="col-md-3">
+					<div class="form-group">
+						<label for="ref_entrega">Referencia <label class="obrigatorio">*</label></label>
+						<input type="text" class="form-control" placeholder="Ex: Loja" id="ref_entrega">
+					</div>
+				</div>
+
+				<div class="mt-4">
+					<div class="col-md-12 col-lg-12">
+						<div class="form-group d-flex justify-content-between">
+							<button type="button" id="Voltar" class="btn btn-primary" onclick="voltarDadosCarga();">
+								<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left-circle" viewBox="0 0 16 16">
+									<path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8m15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-4.5-.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5z" />
+								</svg>
+								Voltar
+							</button>
+							<button type="button" id="Continuar" class="btn btn-primary" onclick="continuarParaContato();">
+								Continuar
+								<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right-circle" viewBox="0 0 16 16">
+									<path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8m15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0M4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5z" />
+								</svg>
+							</button>
+						</div>
+					</div>
+				</div>
+
+				<div class="mt-3" id="msg_avisoZero">
+					<div class="col-md-12 col-lg-12">
+						<label>Insira "0" para todas as informações desconhecidas ou não disponíveis.</label>
+					</div>
+				</div>
+
+			</div>
+
+
+			<!-- Contato -->
+			<div id="FormContato" class="row mb-4">
+				<h2 class="mb-2">Contato</h2>
+				<div class="col-md-4">
+					<div class="form-group">
+						<label for="Email">E-mail <label class="obrigatorio">*</label></label>
+						<div class="input-group mb-3">
+							<input type="text" class="form-control" aria-label="Recipient's username" placeholder="Ex: leandro.santos" aria-describedby="basic-addon2" id="Email">
+							<span class="input-group-text">@@gmail.com</span>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-4">
+					<div class="form-group">
+						<label for="Telefone">Telefone <label class="obrigatorio">*</label></label>
+						<input required="required" type="tel" class="form-control" id="Telefone" name="Telefone" placeholder="Insira seu telefone/celular." maxlength="11" onchange="mascaraTEL();" onkeypress="apenasNumeros(event)">
+					</div>
+				</div>
+
+				<div class="col-md-4">
+					<div class="form-group">
+						<label for="Endereco">Observação</label>
+						<input required="required" type="text" class="form-control" id="obs" name="obs" placeholder="Vendedor /N° do Pedido /Tel. Loja" maxlength="100">
+					</div>
+				</div>
+
+				<!-- Botões Padrão -->
+				<div class="mt-4">
+					<div class="col-md-12 col-lg-12">
+						<div class="form-group d-flex justify-content-between">
+							<button type="button" id="Voltar" class="btn btn-primary" onclick="voltarParaDadosDestino();">
+								<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left-circle" viewBox="0 0 16 16">
+									<path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8m15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-4.5-.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5z" />
+								</svg>
+								&nbsp;Voltar
+							</button>
+							<button type="button" id="Continuar" class="btn btn-primary" onclick="openModalResumoPedido();">
+								&nbsp;Solicitar Envio
+								<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right-circle" viewBox="0 0 16 16">
+									<path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8m15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0M4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5z" />
+								</svg>
+							</button>
+						</div>
+					</div>
+				</div>
+
+				<div class="mt-3" id="msg_avisoZero">
+					<div class="col-md-12 col-lg-12">
+						<label>Insira "0" para todas as informações desconhecidas ou não disponíveis.</label>
+					</div>
+				</div>
+
+			</div>
+
+			<!-- Modal -->
+			<div class="modal fade" id="cofirmResumoPedido" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+				<div class="modal-dialog" role="document" id="cofirmReservDialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h4 class="modal-title" id="modalLabel">Resumo do pedido</h4>
+						</div>
+
+						<div id="CtResumoPedido">
+
+							<div class="form-group d-flex justify-content-between">
+								<label>TIPO DE SERVIÇO:</label>
+								<div id="tpServico">Envio aéreos</div>
+							</div>
+
+							<div class="form-group d-flex justify-content-between">
+								<label>NOME:</label>
+								<div id="resumoNome"></div>
+							</div>
+
+							<div class="form-group d-flex justify-content-between">
+								<label>DOCUMENTO:</label>
+								<div id="resumoDocumento"></div>
+							</div>
+
+							<div class="form-group d-flex justify-content-between">
+								<label>DESTINO:</label>
+								<div id="resumoDestino"></div>
+							</div>
+
+							<div class="form-group d-flex justify-content-between">
+								<label>CATEGORIA DA CARGA:</label>
+								<div id="resumoTipoCarga"></div>
+							</div>
+
+							<div class="form-group d-flex justify-content-between">
+								<label>PESO CARGA:</label>
+								<div id="resumoPesoCarga"></div>
+							</div>
+
+							<div class="form-group d-flex justify-content-between">
+								<label>VALOR DE MERCADORIA:</label>
+								<div id="resumoValorMercadoria"></div>
+							</div>
+
+							<div class="form-group d-flex justify-content-between">
+								<label>DESCRIÇÃO (obs*):</label>
+								<div id="resumoDescricao"></div>
+							</div>
+
+							<div class="form-group d-flex justify-content-between" id="ctResumoCotacao">
+								<label>VALOR DE COTAÇÃO:</label>
+								<div id="resumoCotacao"></div>
+							</div>
+
+							<div class="mt-1" id="msg_aviso_entrega_coleta">
+								<div class="col-md-12 col-lg-12" id="msg_valorNaoAtribuioColeta">
+									<label>Este valor não inclui a taxa de entrega e coleta da carga.</label>
+								</div>
+							</div>
+
+						</div>
+
+						<div class="modal-footer mb-2">
+							<button type="button" class="btn btn-outline-primary" data-dismiss="modal" onclick="closeModalResumoPedido();">Editar</button>
+							<button type="button" class="btn btn-primary" data-dismiss="modal" onclick="solicitaServiço('Envio Aéreo');">Confirmar solicitação</button>
+						</div>
+
+					</div>
+				</div>
+			</div>
+
+			<!-- Aguarde o contato de nossa equipe -->
+			<div id="contatoEquipe" class="row mb-4">
+				<h2 class="mb-2">
+					Pedido Solicitado <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-clipboard2-check" viewBox="0 0 16 16">
+						<path d="M9.5 0a.5.5 0 0 1 .5.5.5.5 0 0 0 .5.5.5.5 0 0 1 .5.5V2a.5.5 0 0 1-.5.5h-5A.5.5 0 0 1 5 2v-.5a.5.5 0 0 1 .5-.5.5.5 0 0 0 .5-.5.5.5 0 0 1 .5-.5z" />
+						<path d="M3 2.5a.5.5 0 0 1 .5-.5H4a.5.5 0 0 0 0-1h-.5A1.5 1.5 0 0 0 2 2.5v12A1.5 1.5 0 0 0 3.5 16h9a1.5 1.5 0 0 0 1.5-1.5v-12A1.5 1.5 0 0 0 12.5 1H12a.5.5 0 0 0 0 1h.5a.5.5 0 0 1 .5.5v12a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5z" />
+						<path d="M10.854 7.854a.5.5 0 0 0-.708-.708L7.5 9.793 6.354 8.646a.5.5 0 1 0-.708.708l1.5 1.5a.5.5 0 0 0 .708 0z" />
+					</svg>
+				</h2>
+				<h5 class="mb-2">Aguarde o contato de nossa equipe...</h5>
+				<input type="hidden" disabled value="" id="valorMedioCotacao">
+
+				<!-- Botões Padrão -->
+				<div class="mt-4">
+					<div class="col-md-12 col-lg-12">
+						<div class="form-group d-flex justify-content-center">
+							<button type="button" id="Continuar" class="btn btn-primary" onclick="window.location.href='@Url.Action("Index", "Home")'">
+								<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" class="bi bi-house" viewBox="0 0 16 16">
+									<path d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L2 8.207V13.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V8.207l.646.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293zM13 7.207V13.5a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5V7.207l5-5z" />
+								</svg> &nbsp;Voltar a Home
+							</button>
+						</div>
+					</div>
+				</div>
+
+			</div>
+
+
+		</div>
+	</form>
+
+</body>
+</html>

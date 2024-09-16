@@ -1,0 +1,479 @@
+﻿@{
+	ViewData["Title"] = "Vegas Transportes Serviços";
+}
+<script>
+	$(document).ready(function () {
+		selecionaCategoriaCarga();
+	});
+</script>
+
+<html>
+<head>
+	<!-- Icon nav bar -->
+	<link rel="shortcut icon" href="" type="image/x-icon">
+	<title>Meu Onibus</title>
+
+</head>
+<body>
+	<form id="form" method="post" autocomplete="off">
+		<div class="container">
+
+			<div class="col-md-12">
+				<div class="mt-2" id="msg_retorno_ctn">
+
+					<h1 class="mb-4"><img id="logo" src="~/css/img/logo.png" /></h1>
+
+					<div class="col-md-12 col-lg-12" id="msg_retorno">
+						<div id="msg_exibicao"></div>
+					</div>
+				</div>
+			</div>
+
+			<!-- Dados da bagagem -->
+			<div id="mo_ddBagagem" class="row mb-4">
+
+				<div class="titleService">
+					<h2 class="mb-2">Dados da bagagem</h2>
+					<a class="itemBack" href="@Url.Action("Index", "Servicos")">
+						<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-arrow-left-circle" viewBox="0 0 16 16">
+							<path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8m15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-4.5-.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5z" />
+						</svg>
+					</a>
+				</div>
+
+				<div class="col-md-4" id="">
+					<div class="form-group">
+						<label for="Altura">Quatidade de malas <label class="obrigatorio">*</label></label>
+						<input required="required" type="text" class="form-control" id="qtd_mala" name="qtd_mala" placeholder="Ex: 3kg = 3" maxlength="5" onkeypress="apenasNumeros(event)" onchange="calculaPesoMala();">
+					</div>
+				</div>
+
+				<div class="col-md-4" id="">
+					<div class="form-group">
+						<label for="media_peso_fardo">Média de peso por mala<label class="obrigatorio">*</label></label>
+						<input required="required" type="text" class="form-control" id="media_peso_mala" name="media_peso_mala" placeholder="Ex: 23kg = 23" maxlength="5" onchange="calculaPesoMala();">
+					</div>
+				</div>
+
+				<div class="col-md-2">
+					<div class="form-group">
+						<label for="Peso">Peso</label>
+						<input required="required" type="text" class="form-control" id="Peso" name="Peso" placeholder="Ex: 100Kg = 100" maxlength="10" onkeypress="apenasNumeros(event)">
+					</div>
+				</div>
+
+				<div id="alinhaCheck" class="col-md-2">
+					<div class="form-group form-check">
+						<input type="checkbox" class="form-check-input" id="n_peso" name="n_peso" onclick="validaPeso();">
+						<label class="form-check-label" for="n_peso">&nbsp; Não sei o peso</label>
+					</div>
+				</div>
+
+				<div class="col-md-4 mt-2">
+					<div class="form-group">
+						<label for="TipoCarga">Categoria da bagagem <label class="obrigatorio">*</label></label>
+						<select required="required" id="TipoMala" class="form-control" name="TipoMala">
+							<option value="">Selecione</option>
+							<option value="bagagem" selected>Bagagem (Pertences Pessoais)</option>
+							<option value="outros">Outros</option>
+						</select>
+					</div>
+				</div>
+
+				<div class="col-md-8 mt-2">
+					<div class="form-group">
+						<label for="Descricao">Descrição <label class="obrigatorio">Opcional</label></label>
+						<input required="required" type="text" class="form-control" id="Descricao_mala" name="Descricao_mala" placeholder="Ex: Outras categorias de carga" maxlength="50">
+					</div>
+				</div>
+
+				<div class="mt-4">
+					<div class="col-md-12 col-lg-12 mb-4">
+						<div class="form-group">
+							<button type="button" id="" class="btn btn-primary" onclick="irDadosDoCliente();">
+								Continuar
+								<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right-circle" viewBox="0 0 16 16">
+									<path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8m15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0M4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5z" />
+								</svg>
+							</button>
+						</div>
+					</div>
+				</div>
+
+				<div class="mt-3" id="msg_avisoZero">
+					<div class="col-md-12 col-lg-12">
+						<label>Insira "0" para todas as informações desconhecidas ou não disponíveis.</label>
+					</div>
+				</div>
+
+			</div>
+
+			<!-- Dados do Cliente  -->
+			<div id="mo_ddCliente" class="row mb-2">
+
+				<h2 class="mb-2">Dados do Cliente</h2>
+				<div class="col-md-4">
+					<div class="form-group">
+						<label for="Nome">Nome completo <label class="obrigatorio">*</label></label>
+						<input required="required" type="text" class="form-control" id="Nome" name="Nome" placeholder="Digite seu nome" maxlength="50">
+					</div>
+				</div>
+				<div class="col-md-4">
+					<div class="form-group">
+						<label for="CPF">CPF / CNPJ <label class="obrigatorio">*</label></label>
+						<input required="required" type="text" class="form-control" id="CPF" name="CPF" placeholder="Insira o seu documento. Ex: 123.456.789-10" onkeypress="apenasNumeros(event)" onchange="identificaDoc();" maxlength="14">
+					</div>
+				</div>
+
+				<div class="col-md-4">
+					<div class="form-group">
+						<label for="TipoCarga">Local de Coleta <label class="obrigatorio">*</label></label>
+						<select required="required" id="tipoLocal" class="form-control" onchange="selecionaTipoLocalFardo();">
+							<option value="" selected>Selecione o local de coleta</option>
+							<option value="meuHotel">Meu Hotel</option>
+							<option value="endPersonalizado">Endereço Personalizado</option>
+						</select>
+					</div>
+				</div>
+
+			</div>
+			<div id="mo_ddLocal" class="row mb-4">
+
+				<div class="col-md-4" id="fardoHotel">
+					<div class="form-group">
+						<label for="Retirada">Hotel <label class="obrigatorio">*</label></label>
+						<select required="required" id="Hotel" class="form-control" name="hotel" onchange="preencheHotel();">
+							<option value="" selected>Selecione</option>
+							<option value="bras-palace">Brás Palace Hotel</option>
+							<option value="luz-plaza">Luz Plaza São Paulo</option>
+							<option value="hotel-makuxis">Hotel Makuxis</option>
+							<option value="hotel-nacional-inn">Hotel Nacional Inn São Paulo</option>
+							<option value="pousada-recanto-bras">Pousada Recanto do Brás</option>
+							<option value="hotel-victoria">Hotel Victoria</option>
+							<option value="pousada-bras-feira-madrugada">Pousada HazBrás - Feira da Madrugada</option>
+							<option value="hotel-normandie">Hotel Normandie</option>
+							<option value="hotel-family">Hotel Family</option>
+							<option value="hotel-travel-inn-bras">Hotel Travel Inn Brás</option>
+							<option value="shopping-tupan">Shopping Tupan</option>
+						</select>
+					</div>
+				</div>
+
+
+				<div class="col-md-4" id="fardoCep">
+					<div class="form-group">
+						<label for="Cep">CEP <label class="obrigatorio">*</label></label>
+						<input required="required" type="text" class="form-control" id="CEP" name="CEP" onkeypress="apenasNumeros(event)" onchange="mascaraCEP();" placeholder="Insira o seu CEP. Ex: 123.45-67" maxlength="8">
+					</div>
+				</div>
+
+				<div class="col-md-6">
+					<div class="form-group">
+						<label for="Endereco">Endereço <label class="obrigatorio">*</label></label>
+						<input required="required" type="text" class="form-control" id="Endereco" name="Endereco" placeholder="Insira seu endereço. Ex: Rua Santos" maxlength="400">
+					</div>
+				</div>
+
+
+				<div class="col-md-2">
+					<div class="form-group">
+						<label for="Logradouro">Numero <label class="obrigatorio">*</label></label>
+						<input required="required" type="text" class="form-control" id="Logradouro" name="Logradouro" maxlength="50" placeholder="Insira o numero. Ex: 29">
+					</div>
+				</div>
+
+				<div class="col-md-4">
+					<div class="form-group">
+						<label for="Retirada">Horario <label class="obrigatorio">*</label></label>
+						<select required="required" id="horarioDeServico" class="form-control">
+							<option value="" selected>Selecione um horario para a coleta</option>
+							<option value="09:00 Horas">09:00 Horas</option>
+							<option value="10:00 Horas">10:00 Horas</option>
+							<option value="11:00 Horas">11:00 Horas</option>
+							<option value="12:00 Horas">12:00 Horas</option>
+							<option value="13:00 Horas">13:00 Horas</option>
+							<option value="14:00 Horas">14:00 Horas</option>
+							<option value="15:00 Horas">15:00 Horas</option>
+							<option value="16:00 Horas">16:00 Horas</option>
+							<option value="17:00 Horas">17:00 Horas</option>
+						</select>
+					</div>
+				</div>
+
+				<div class="col-md-4">
+					<div class="form-group">
+						<label for="Referencia">Observação <label class="obrigatorio">Opcional</label></label>
+						<input required="required" type="text" class="form-control" id="Referencia" name="Referencia" maxlength="50" placeholder="Ex: Me chamar no whatsapp assim que chegar">
+					</div>
+				</div>
+
+				<div class="mt-4">
+					<div class="col-md-12 col-lg-12">
+						<div class="form-group d-flex justify-content-between">
+							<button type="button" id="Voltar" class="btn btn-primary" onclick="irDadosDaBagagem();">
+								<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left-circle" viewBox="0 0 16 16">
+									<path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8m15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-4.5-.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5z" />
+								</svg>
+								Voltar
+							</button>
+							<button type="button" id="Continuar" class="btn btn-primary" onclick="irDadosDoOnibus();">
+								Continuar
+								<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right-circle" viewBox="0 0 16 16">
+									<path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8m15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0M4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5z" />
+								</svg>
+							</button>
+						</div>
+					</div>
+				</div>
+
+				<div class="mt-1" id="msg_avisoZero">
+					<div class="col-md-12 col-lg-12">
+						<label>Insira "0" para todas as informações desconhecidas ou não disponíveis.</label>
+					</div>
+				</div>
+
+
+			</div>
+
+			<!-- Dados do Onibus  -->
+			<div id="mo_ddOnibus" class="row mb-4">
+				<h2 class="mb-2">Dados do Onibus</h2>
+
+				<div class="col-md-3" id="fardoCep">
+					<div class="form-group">
+						<label for="Cep">CEP do local do onibus<label class="obrigatorio">*</label></label>
+						<input required="required" type="text" class="form-control" id="CEP_Entrega" name="CEP_Entrega" onkeypress="apenasNumeros(event)" onchange="mascaraCepEntrega();" placeholder="Insira o seu CEP. Ex: 123.45-67" maxlength="8">
+					</div>
+				</div>
+
+				<div class="col-md-6">
+					<div class="form-group">
+						<label for="Endereco">Endereço <label class="obrigatorio">*</label></label>
+						<input required="required" type="text" class="form-control" id="Endereco_entrega" name="Endereco_entrega" placeholder="Insira seu endereço. Ex: Rua Santos" maxlength="400">
+					</div>
+				</div>
+
+				<div class="col-md-3">
+					<div class="form-group">
+						<label for="Retirada">Companhia do onibus <label class="obrigatorio">*</label></label>
+						<select required="required" id="companhiaOnibus" class="form-control">
+							<option value="" selected>Selecione uma companhia</option>
+							<option value="0">Companhia 01</option>
+							<option value="0">Companhia 02</option>
+							<option value="0">Companhia 03</option>
+							<option value="0">Companhia 04</option>
+							<option value="0">Companhia 05</option>
+							<option value="0">Companhia 06</option>
+						</select>
+					</div>
+				</div>
+
+				<div class="col-md-4">
+					<div class="form-group">
+						<label for="Referencia">Numero do Onibus <label class="obrigatorio">Opcional</label></label>
+						<input required="required" type="text" class="form-control" id="numOnibus" name="numOnibus" maxlength="50" placeholder="Ex: SS264">
+					</div>
+				</div>
+
+				<div class="col-md-3">
+					<div class="form-group">
+						<label for="Retirada">Horario <label class="obrigatorio">*</label></label>
+						<select required="required" id="horarioDeServico" class="form-control">
+							<option value="" selected>Selecione</option>
+							<option value="09:00 Horas">09:00 Horas</option>
+							<option value="10:00 Horas">10:00 Horas</option>
+							<option value="11:00 Horas">11:00 Horas</option>
+							<option value="12:00 Horas">12:00 Horas</option>
+							<option value="13:00 Horas">13:00 Horas</option>
+							<option value="14:00 Horas">14:00 Horas</option>
+							<option value="15:00 Horas">15:00 Horas</option>
+							<option value="16:00 Horas">16:00 Horas</option>
+							<option value="17:00 Horas">17:00 Horas</option>
+							<option value="18:00 Horas">18:00 Horas</option>
+						</select>
+					</div>
+				</div>
+
+				<div class="col-md-5">
+					<div class="form-group">
+						<label for="Referencia">Referencia <label class="obrigatorio">Opcional</label></label>
+						<input required="required" type="text" class="form-control" id="Referencia" name="Referencia" maxlength="50" placeholder="Ex: Placa do Onibus: DDJ 1235">
+					</div>
+				</div>
+
+				<div class="mt-4">
+					<div class="col-md-12 col-lg-12">
+						<div class="form-group d-flex justify-content-between">
+							<button type="button" id="Voltar" class="btn btn-primary" onclick="irDadosDoCliente();">
+								<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left-circle" viewBox="0 0 16 16">
+									<path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8m15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-4.5-.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5z" />
+								</svg>
+								Voltar
+							</button>
+							<button type="button" id="Continuar" class="btn btn-primary" onclick="irDadosContatos();">
+								Continuar
+								<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right-circle" viewBox="0 0 16 16">
+									<path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8m15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0M4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5z" />
+								</svg>
+							</button>
+						</div>
+					</div>
+				</div>
+
+				<div class="mt-1" id="msg_avisoZero">
+					<div class="col-md-12 col-lg-12">
+						<label>Insira "0" para todas as informações desconhecidas ou não disponíveis.</label>
+					</div>
+				</div>
+
+
+			</div>
+
+			<!-- Contato -->
+			<div id="mo_ddContato" class="row mb-4">
+				<h2 class="mb-2">Contato</h2>
+				<div class="col-md-4">
+					<div class="form-group">
+						<label for="Email">E-mail <label class="obrigatorio">*</label></label>
+						<div class="input-group mb-3">
+							<input type="text" class="form-control" aria-label="Recipient's username" placeholder="Ex: leandro.santos" aria-describedby="basic-addon2" id="Email">
+							<span class="input-group-text">@@gmail.com</span>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-4">
+					<div class="form-group">
+						<label for="Telefone">Telefone <label class="obrigatorio">*</label></label>
+						<input required="required" type="tel" class="form-control" id="Telefone" name="Telefone" placeholder="Insira seu telefone/celular." maxlength="11" onchange="mascaraTEL();" onkeypress="apenasNumeros(event)">
+					</div>
+				</div>
+
+				<div class="col-md-4">
+					<div class="form-group">
+						<label for="">Observação</label>
+						<input required="required" type="text" class="form-control" id="obs" name="obs" placeholder="Em frete a padaria" maxlength="100">
+					</div>
+				</div>
+
+				<!-- Botões Padrão -->
+				<div class="mt-4">
+					<div class="col-md-12 col-lg-12">
+						<div class="form-group d-flex justify-content-between">
+							<button type="button" id="Voltar" class="btn btn-primary" onclick="irDadosDoOnibus();">
+								<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left-circle" viewBox="0 0 16 16">
+									<path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8m15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-4.5-.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5z" />
+								</svg>
+								&nbsp;Voltar
+							</button>
+							<button type="button" id="Continuar" class="btn btn-primary" onclick="irResumoMeuOnibus();">
+								&nbsp;Solicitar serviço
+								<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right-circle" viewBox="0 0 16 16">
+									<path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8m15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0M4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5z" />
+								</svg>
+							</button>
+						</div>
+					</div>
+				</div>
+
+				<div class="mt-3" id="msg_avisoZero">
+					<div class="col-md-12 col-lg-12">
+						<label>Insira "0" para todas as informações desconhecidas ou não disponíveis.</label>
+					</div>
+				</div>
+
+			</div>
+
+			<!-- Modal -->
+			<div class="modal fade" id="modalResulmeMeuOnibus" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+				<div class="modal-dialog" role="document" id="cofirmReservDialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h4 class="modal-title" id="modalLabel">Resumo do pedido</h4>
+						</div>
+
+						<div id="CtResumoPedido">
+
+							<div class="form-group d-flex justify-content-between">
+								<label>TIPO DE SERVIÇO:</label>
+								<div id="tpServico">Entregar no meu onibus</div>
+							</div>
+
+							<div class="form-group d-flex justify-content-between">
+								<label>NOME:</label>
+								<div id="resumoNome"></div>
+							</div>
+
+							<div class="form-group d-flex justify-content-between">
+								<label>DOCUMENTO:</label>
+								<div id="resumoDocumento"></div>
+							</div>
+
+							<div class="form-group d-flex justify-content-between">
+								<label>LOCAL ORIGEM:</label>
+								<div id="resumoLocalOrigem"></div>
+							</div>
+
+							<div class="form-group d-flex justify-content-between">
+								<label>LOCAL DESTINO:</label>
+								<div id="resumoLocalDestino"></div>
+							</div>
+
+
+							<div class="form-group d-flex justify-content-between">
+								<label>HORARIO:</label>
+								<div id="resumoHorario"></div>
+							</div>
+
+							<div class="form-group d-flex justify-content-between">
+								<label>PESO APROXIMADO:</label>
+								<div id="resumoPesoMala"></div>
+							</div>
+
+							<div class="form-group d-flex justify-content-between">
+								<label>DESCRIÇÃO (obs*):</label>
+								<div id="resumoDescricao"></div>
+							</div>
+
+						</div>
+
+						<div class="modal-footer mb-2">
+							<button type="button" class="btn btn-outline-primary" data-dismiss="modal" onclick="fechaResumoMeuOnibus();">Editar</button>
+							<button type="button" class="btn btn-primary" data-dismiss="modal" onclick="solicitarServiçoMeuOnibus();">Confirmar Pedido</button>
+						</div>
+
+					</div>
+				</div>
+			</div>
+
+			<!-- Aguarde o contato de nossa equipe -->
+			<div id="aguardeContatoMeuOnibus" class="row mb-4">
+				<h2 class="mb-2">
+					Pedido Solicitado <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-clipboard2-check" viewBox="0 0 16 16">
+						<path d="M9.5 0a.5.5 0 0 1 .5.5.5.5 0 0 0 .5.5.5.5 0 0 1 .5.5V2a.5.5 0 0 1-.5.5h-5A.5.5 0 0 1 5 2v-.5a.5.5 0 0 1 .5-.5.5.5 0 0 0 .5-.5.5.5 0 0 1 .5-.5z" />
+						<path d="M3 2.5a.5.5 0 0 1 .5-.5H4a.5.5 0 0 0 0-1h-.5A1.5 1.5 0 0 0 2 2.5v12A1.5 1.5 0 0 0 3.5 16h9a1.5 1.5 0 0 0 1.5-1.5v-12A1.5 1.5 0 0 0 12.5 1H12a.5.5 0 0 0 0 1h.5a.5.5 0 0 1 .5.5v12a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5z" />
+						<path d="M10.854 7.854a.5.5 0 0 0-.708-.708L7.5 9.793 6.354 8.646a.5.5 0 1 0-.708.708l1.5 1.5a.5.5 0 0 0 .708 0z" />
+					</svg>
+				</h2>
+				<h5 class="mb-2">Aguarde o contato de nossa equipe...</h5>
+				<input type="hidden" disabled value="" id="valorMedioCotacao">
+
+				<!-- Botões Padrão -->
+				<div class="mt-4">
+					<div class="col-md-12 col-lg-12">
+						<div class="form-group d-flex justify-content-center">
+							<button type="button" id="Continuar" class="btn btn-primary" onclick="window.location.href='@Url.Action("Index", "Home")'">
+								<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" class="bi bi-house" viewBox="0 0 16 16">
+									<path d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L2 8.207V13.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V8.207l.646.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293zM13 7.207V13.5a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5V7.207l5-5z" />
+								</svg> &nbsp;Voltar a Home
+							</button>
+						</div>
+					</div>
+				</div>
+			</div>
+
+
+		</div>
+	</form>
+
+</body>
+</html>
