@@ -47,3 +47,22 @@ Uma página dedicada a contar a história da transportadora, destacar os princip
 - **Design do Layout**: Figma
 - **Imagens**: PhotoShop
 
+
+Licença
+Este projeto está licenciado sob a Licença MIT. Consulte o arquivo LICENSE para mais detalhes.
+
+----------------------------------------------------------------------------------------------------------------------------------------------------
+Contato
+----------------------------------------------------------------------------------------------------------------------------------------------------
+Se tiver dúvidas ou precisar de suporte, entre em contato:
+
+Nome: Leandro Silva Sampaio
+
+Telefone (Whatsapp): +55 11 98557-0037
+
+Email: Leandro_sampaio.dasilva1@outlook.com 
+
+LinkedIn: https://www.linkedin.com/in/leandro-sampaio-66248b230/ 
+
+Portifólio web: https://leandrosampaio7.github.io/webpage/index
+
