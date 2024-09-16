@@ -47,7 +47,7 @@ Uma página dedicada a contar a história da transportadora, destacar os princip
 - **Design do Layout**: Figma
 - **Imagens**: PhotoShop
 
-
+----------------------------------------------------------------------------------------------------------------------------------------------------
 Licença
 Este projeto está licenciado sob a Licença MIT. Consulte o arquivo LICENSE para mais detalhes.
 
